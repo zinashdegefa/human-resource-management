@@ -8,6 +8,7 @@ import org.zinashdegefa.humanresourcemanagement.repositories.DepartmentRepositor
 import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -19,7 +20,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         this.departmentRepository = departmentRepository;
     }
     @Override
-    public void addDepartment(Department department) {
+    public void saveDepartment(Department department) {
 
         departmentRepository.save(department);
     }
@@ -34,8 +35,28 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     @Transactional
+    public Department getDepartmentById(int departmentId) {
+        Optional<Department> getDepartmentById = departmentRepository.findById((long) departmentId);
+        if (getDepartmentById.isPresent()) {
+            System.out.println("The Id of the department is " + getDepartmentById.get().getDepartmentId());
+            System.out.println("The Name is " + getDepartmentById.get().getDepartmentName());
+
+            return getDepartmentById.get();
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
     public void deleteDepartment(int departmentId) {
         departmentRepository.deleteById((long) departmentId);
         System.out.println("The department with id number "  + departmentId + " is deleted!");
+    }
+
+    @Override
+    @Transactional
+    public void updateDepartment(Department department) {
+
+        departmentRepository.save(department);
     }
 }

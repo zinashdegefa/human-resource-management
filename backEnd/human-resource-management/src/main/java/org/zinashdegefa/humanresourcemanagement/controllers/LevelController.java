@@ -16,9 +16,9 @@ public class LevelController {
         this.levelService = levelService;
     }
 
-    @PostMapping("/addLevel")
-    private String addLevel(@RequestBody Level level) {
-        levelService.addLevel(level);
+    @PostMapping("/saveLevel")
+    private String saveLevel(@RequestBody Level level) {
+        levelService.saveLevel(level);
         return "Level Successfully added";
     }
 
@@ -35,5 +35,12 @@ public class LevelController {
     public String deleteLevel(@PathVariable int levelId) {
         levelService.deleteLevel(levelId);
         return "Id number " + levelId + " is deleted!";
+    }
+
+    @PutMapping("/updateLevel")
+    public Level updateLevel(@RequestBody Level level) {
+        levelService.saveLevel(level);
+        System.out.println(level.getLevelId() + " is updated!");
+        return level;
     }
 }

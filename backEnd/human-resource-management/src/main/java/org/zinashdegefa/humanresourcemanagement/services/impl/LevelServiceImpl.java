@@ -20,7 +20,7 @@ public class LevelServiceImpl implements LevelService {
     }
 
     @Override
-    public void addLevel(Level level) {
+    public void saveLevel(Level level) {
 
         levelRepository.save(level);
     }
@@ -38,5 +38,12 @@ public class LevelServiceImpl implements LevelService {
     public void deleteLevel(int levelId) {
         levelRepository.deleteById((long) levelId);
         System.out.println("The level with id number "  + levelId + " is deleted!");
+    }
+
+    @Override
+    @Transactional
+    public void updateLevel(Level level) {
+
+        levelRepository.save(level);
     }
 }

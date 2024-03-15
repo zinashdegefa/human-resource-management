@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import org.springframework.web.bind.annotation.*;
+import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.models.Role;
 import org.zinashdegefa.humanresourcemanagement.services.RoleService;
 
@@ -16,9 +17,9 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @PostMapping("/addRole")
-    private String addRole(@RequestBody Role role) {
-        roleService.addRole(role);
+    @PostMapping("/saveRole")
+    private String saveRole(@RequestBody Role role) {
+        roleService.saveRole(role);
         return "Role Successfully added";
     }
 
@@ -34,5 +35,12 @@ public class RoleController {
     public String deleteRole(@PathVariable int roleId) {
         roleService.deleteRole(roleId);
         return "Id number " + roleId + " is deleted!";
+    }
+
+    @PutMapping("/updateRole")
+    public Role updateRole(@RequestBody Role role) {
+        roleService.saveRole(role);
+        System.out.println(role.getRoleName() + " is updated!");
+        return role;
     }
 }

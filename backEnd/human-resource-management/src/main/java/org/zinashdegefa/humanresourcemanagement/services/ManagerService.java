@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface ManagerService {
 
-    void addManager(Manager manager);
+    void saveManager(Manager manager);
     List<Manager> getAllManagers();
     void deleteManager(int managerId);
+    public void updateManager(Manager manager);
 }

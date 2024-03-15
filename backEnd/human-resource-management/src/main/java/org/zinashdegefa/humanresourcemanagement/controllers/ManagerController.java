@@ -17,9 +17,9 @@ public class ManagerController {
         this.managerService = managerService;
     }
 
-    @PostMapping("/addManager")
-    private String addManager(@RequestBody Manager manager) {
-        managerService.addManager(manager);
+    @PostMapping("/saveManager")
+    private String saveManager(@RequestBody Manager manager) {
+        managerService.saveManager(manager);
         return "Manager Successfully added";
     }
 
@@ -36,6 +36,13 @@ public class ManagerController {
     public String deleteDepartment(@PathVariable int managerId) {
         managerService.deleteManager(managerId);
         return "Id number " + managerId + " is deleted!";
+    }
+
+    @PutMapping("/updateManager")
+    public Manager updateManager(@RequestBody Manager manager) {
+        managerService.saveManager(manager);
+        System.out.println(manager.getManagerId() + " is updated!");
+        return manager;
     }
 
 

@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addRole(Role role) {
+    public void saveRole(Role role) {
 
         roleRepository.save(role);
     }
@@ -38,5 +38,12 @@ public class RoleServiceImpl implements RoleService {
     public void deleteRole(int roleId) {
         roleRepository.deleteById((long) roleId);
         System.out.println("The role with id number "  + roleId + " is deleted!");
+    }
+
+    @Override
+    @Transactional
+    public void updateRole(Role role) {
+
+        roleRepository.save(role);
     }
 }

@@ -16,9 +16,9 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @PostMapping("/addDepartment")
-    private String addDepartment(@RequestBody Department department) {
-        departmentService.addDepartment(department);
+    @PostMapping("/saveDepartment")
+    private String saveDepartment(@RequestBody Department department) {
+        departmentService.saveDepartment(department);
         return "Department Successfully added";
     }
 
@@ -31,9 +31,22 @@ public class DepartmentController {
 
     }
 
+    @GetMapping("/department/{departmentId}")
+    public Department getDepartmentById(@PathVariable int departmentId){
+
+        return departmentService.getDepartmentById(departmentId);
+    }
+
     @DeleteMapping("/department/delete/{departmentId}")
     public String deleteDepartment(@PathVariable int departmentId) {
         departmentService.deleteDepartment(departmentId);
         return "Id number " + departmentId + " is deleted!";
+    }
+
+    @PutMapping("/updateDepartment")
+    public Department updateDepartment(@RequestBody Department department) {
+        departmentService.saveDepartment(department);
+        System.out.println(department.getDepartmentName() + " is updated!");
+        return department;
     }
 }

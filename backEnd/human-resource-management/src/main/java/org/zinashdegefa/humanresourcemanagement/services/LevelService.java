@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface LevelService {
 
-    void addLevel(Level level);
+    void saveLevel(Level level);
     List<Level> getAllLevels();
     void deleteLevel(int levelId);
+    public void updateLevel(Level level);
 }
