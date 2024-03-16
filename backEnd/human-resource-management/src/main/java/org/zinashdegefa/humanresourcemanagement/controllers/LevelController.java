@@ -28,7 +28,12 @@ public class LevelController {
         List<Level> levels = levelService.getAllLevels();
 
         return levels;
+    }
 
+    @GetMapping("/getLevelById/{levelId}")
+    public Level getLevelById(@PathVariable int levelId){
+
+        return levelService.getLevelById(levelId);
     }
 
     @DeleteMapping("/level/delete/{levelId}")
@@ -40,7 +45,7 @@ public class LevelController {
     @PutMapping("/updateLevel")
     public Level updateLevel(@RequestBody Level level) {
         levelService.saveLevel(level);
-        System.out.println(level.getLevelId() + " is updated!");
+        System.out.println(level.getId() + " is updated!");
         return level;
     }
 }

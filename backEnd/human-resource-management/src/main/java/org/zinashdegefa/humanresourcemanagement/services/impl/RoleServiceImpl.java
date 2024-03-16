@@ -8,6 +8,7 @@ import org.zinashdegefa.humanresourcemanagement.repositories.RoleRepository;
 import org.zinashdegefa.humanresourcemanagement.services.RoleService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -31,6 +32,17 @@ public class RoleServiceImpl implements RoleService {
 
         return roles;
 
+    }
+
+    @Override
+    @Transactional
+    public Role getRoleById(int roleId) {
+        Optional<Role> getRoleById = roleRepository.findById((long) roleId);
+        if (getRoleById.isPresent()) {
+            System.out.println("The role name is " + getRoleById.get().getRoleName());
+            return getRoleById.get();
+        }
+        return null;
     }
 
     @Override

@@ -38,7 +38,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department getDepartmentById(int departmentId) {
         Optional<Department> getDepartmentById = departmentRepository.findById((long) departmentId);
         if (getDepartmentById.isPresent()) {
-            System.out.println("The Id of the department is " + getDepartmentById.get().getDepartmentId());
+            System.out.println("The Id of the department is " + getDepartmentById.get().getId());
             System.out.println("The Name is " + getDepartmentById.get().getDepartmentName());
 
             return getDepartmentById.get();

@@ -9,6 +9,7 @@ import org.zinashdegefa.humanresourcemanagement.repositories.ManagerRepository;
 import org.zinashdegefa.humanresourcemanagement.services.ManagerService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -32,6 +33,17 @@ public class ManagerServiceImpl implements ManagerService {
 
         return managers;
 
+    }
+
+    @Override
+    @Transactional
+    public Manager getManagerById(int managerId) {
+        Optional<Manager> getManagerById = managerRepository.findById((long) managerId);
+        if (getManagerById.isPresent()) {
+            System.out.println("The Id of the manager is " + getManagerById.get().getId());
+            return getManagerById.get();
+        }
+        return null;
     }
 
     @Override

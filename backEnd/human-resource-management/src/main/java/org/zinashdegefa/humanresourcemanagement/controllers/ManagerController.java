@@ -32,6 +32,12 @@ public class ManagerController {
 
     }
 
+    @GetMapping("/getManagerById/{managerId}")
+    public Manager getManagerById(@PathVariable int managerId){
+
+        return managerService.getManagerById(managerId);
+    }
+
     @DeleteMapping("/manager/delete/{managerId}")
     public String deleteDepartment(@PathVariable int managerId) {
         managerService.deleteManager(managerId);
@@ -41,7 +47,7 @@ public class ManagerController {
     @PutMapping("/updateManager")
     public Manager updateManager(@RequestBody Manager manager) {
         managerService.saveManager(manager);
-        System.out.println(manager.getManagerId() + " is updated!");
+        System.out.println(manager.getId() + " is updated!");
         return manager;
     }
 

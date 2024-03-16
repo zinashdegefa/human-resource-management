@@ -40,7 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getEmployeeById(int employeeId) {
         Optional<Employee> getEmployeeById = employeeRepository.findById((long) employeeId);
         if (getEmployeeById.isPresent()) {
-            System.out.println("The Id of the employee is " + getEmployeeById.get().getEmployeeId());
+            System.out.println("The Id of the employee is " + getEmployeeById.get().getId());
             System.out.println("The Name is " + getEmployeeById.get().getFirstName());
 
             return getEmployeeById.get();

@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +12,19 @@ import org.zinashdegefa.humanresourcemanagement.services.EmployeeService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class EmployeeController {
     private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
+    @RequestMapping("/")
+    public String home(){
+        return "index";
+    }
+
 
     @PostMapping("/saveEmployee")
     private String saveEmployee(@RequestBody Employee employee) {
@@ -27,17 +34,18 @@ public class EmployeeController {
 
     @GetMapping("/getAllEmployees")
 
-    public List<Employee> employees() {
+    public String employees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
-
-        return employees;
+        model.addAttribute("employees", employees);
+        return "all-employees";
 
     }
 
-    @GetMapping("/employee/{employeeId}")
-    public Employee getEmployeeById(@PathVariable int employeeId){
-
-        return employeeService.getEmployeeById(employeeId);
+    @GetMapping("/getEmployeeById/{employeeId}")
+    public String getEmployeeById(@PathVariable int employeeId, Model model){
+     Employee employee = employeeService.getEmployeeById(employeeId);
+     model.addAttribute("emp", employee);
+        return "employee";
     }
 
     @DeleteMapping("/employee/delete/{employeeId}")
@@ -51,6 +59,14 @@ public class EmployeeController {
         employeeService.saveEmployee(employee);
         System.out.println(employee.getFirstName() + " is updated!");
         return employee;
+    }
+
+    @GetMapping("/addForm")
+
+    public String addForm() {
+
+        return "add-form";
+
     }
 
 }

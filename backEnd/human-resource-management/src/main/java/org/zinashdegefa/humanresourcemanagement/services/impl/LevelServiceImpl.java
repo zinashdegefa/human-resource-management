@@ -8,6 +8,7 @@ import org.zinashdegefa.humanresourcemanagement.repositories.LevelRepository;
 import org.zinashdegefa.humanresourcemanagement.services.LevelService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LevelServiceImpl implements LevelService {
@@ -31,6 +32,18 @@ public class LevelServiceImpl implements LevelService {
 
         return levels;
 
+    }
+
+    @Override
+    @Transactional
+    public Level getLevelById(int levelId) {
+        Optional<Level> getLevelById = levelRepository.findById((long) levelId);
+        if (getLevelById.isPresent()) {
+            System.out.println("The Id of the level is " + getLevelById.get().getId());
+
+            return getLevelById.get();
+        }
+        return null;
     }
 
     @Override

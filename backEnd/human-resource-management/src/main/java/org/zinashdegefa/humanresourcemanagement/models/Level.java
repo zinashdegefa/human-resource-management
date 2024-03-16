@@ -17,10 +17,8 @@ public class Level {
     @Column(name = "level_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int levelId;
-    private String lowerLevel;
-    private String middleLevel;
-    private String topLevel;
-    private String executiveLevel;
+    private int id;
+    private String levelName;
+
 
 }
