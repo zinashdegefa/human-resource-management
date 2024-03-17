@@ -14,11 +14,13 @@
     <table class="table table-striped table-dark">
         <thead>
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">fName</th>
-            <th scope="col">lName</th>
-            <th scope="col">role</th>
-            <th scope="col">level</th>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Level</th>
+            <th scope="col">Department</th>
+            <th scope="col">Manager</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -27,11 +29,13 @@
             <td th:text="${em.id}"></td>
             <td th:text="${em.firstName}"></td>
             <td th:text="${em.lastName}"></td>
-            <td th:text="${em.role}"></td>
-            <td th:text="${em.level}"></td>
+            <td th:text="${em.role.getRoleName()}"></td>
+            <td th:text="${em.level.getLevelName()}"></td>
+            <td th:text="${em.department.getDepartmentName()}"></td>
+            <td th:text="${em.manager.getFirstName()}"></td>
 
             <td><a class="btn btn-success" th:href="@{/updateEmployee/{id}(id=${em.id})}">Update</a></td>
-            <td> <a class="btn btn-danger">Delete</a></td>
+            <td> <a class="btn btn-danger" th:href="@{/employee/delete/{id}(id=${em.id})}">Delete</a></td>
         </tr>
         </tbody>
     </table>

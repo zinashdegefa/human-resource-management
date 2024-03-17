@@ -22,9 +22,18 @@ public class Employee {
 
     private String lastName;
 
-    private String role;
-
-    private String level;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+    @ManyToOne
+    @JoinColumn(name = "level_id")
+    private Level level;
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 
 }

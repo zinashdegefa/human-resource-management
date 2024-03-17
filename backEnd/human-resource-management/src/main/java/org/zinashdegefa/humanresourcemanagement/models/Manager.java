@@ -20,6 +20,7 @@ public class Manager {
     private String firstName;
 
     private String lastName;
-
-    private String department;
+@OneToOne
+@JoinColumn(name="department_id")
+    private Department department;
 }

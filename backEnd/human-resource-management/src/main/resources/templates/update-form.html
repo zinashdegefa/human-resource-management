@@ -26,21 +26,33 @@
         <div class="form-group col-md-6">
             <label for="role">Role</label>
             <select id="role" th:field="*{role}" class="form-control">
-                <option selected value="">Choose...</option>
-                <option th:value="'Software engineer'">Software engineer</option>
-                <option th:value="'Finance officer'">Finance officer</option>
-                <option th:value="'Sales'">Sales</option>
-                <option th:value="'Cashier'">Cashier</option>
+                <th:block th:each="rol: ${roles}">
+                    <option th:text="${rol.roleName}" th:value="${rol.id}"></option>
+                </th:block>
             </select>
         </div>
         <div class="form-group col-md-6">
-            <label for="level">State</label>
+            <label for="level">Level</label>
             <select id="level" th:field="*{level}" class="form-control">
-                <option selected value="">Choose...</option>
-                <option th:value="'Entry'">Entry</option>
-                <option th:value="'Intermediate'">Intermediate</option>
-                <option th:value="'Senior'">Senior</option>
-
+                <th:block th:each="lev: ${levels}">
+                    <option th:text="${lev.levelName}" th:value="${lev.id}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="manager">Manager</label>
+            <select id="manager" th:field="*{manager}" class="form-control">
+                <th:block th:each="man: ${managers}">
+                    <option th:text="${man.firstName}" th:value="${man.id}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="department">Department</label>
+            <select id="department" th:field="*{department}" class="form-control">
+                <th:block th:each="dep: ${departments}">
+                    <option th:text="${dep.departmentName}" th:value="${dep.id}"></option>
+                </th:block>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
