@@ -21,15 +21,17 @@ public class EmployeeController {
     }
 
     @RequestMapping("/")
-    public String home(){
+    public String home() {
         return "index";
     }
 
 
     @PostMapping("/saveEmployee")
-    private String saveEmployee(@RequestBody Employee employee) {
+    private String saveEmployee(@ModelAttribute("employee") Employee employee) {
+
+        System.out.println("Employee to be updated:/saved "+ employee);
         employeeService.saveEmployee(employee);
-        return "Employee Successfully added";
+        return "redirect:/getAllEmployees";
     }
 
     @GetMapping("/getAllEmployees")
@@ -42,9 +44,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployeeById/{employeeId}")
-    public String getEmployeeById(@PathVariable int employeeId, Model model){
-     Employee employee = employeeService.getEmployeeById(employeeId);
-     model.addAttribute("emp", employee);
+    public String getEmployeeById(@PathVariable int employeeId, Model model) {
+        Employee employee = employeeService.getEmployeeById(employeeId);
+        model.addAttribute("emp", employee);
         return "employee";
     }
 
@@ -54,19 +56,27 @@ public class EmployeeController {
         return "Id number " + employeeId + " is deleted!";
     }
 
-    @PutMapping("/updateEmployee")
-    public Employee updateEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
-        System.out.println(employee.getFirstName() + " is updated!");
-        return employee;
+//    @PutMapping("/updateEmployee")
+//    public String updateEmployee(@ModelAttribute("employee") Employee employee) {
+//        employeeService.saveEmployee(employee);
+//        System.out.println(employee.getFirstName() + " is updated!");
+//        return "redirect:/getAllEmployees";
+//    }
+
+    @RequestMapping("/addForm")
+    public String addForm(Model model) {
+        Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+        return "add-form";
     }
 
-    @GetMapping("/addForm")
-
-    public String addForm() {
-
-        return "add-form";
-
+    @RequestMapping("/updateEmployee/{id}")
+    public String updateForm(@PathVariable int id, Model model) {
+        System.out.println("Id: " + id);
+        Employee employee = employeeService.getEmployeeById(id);
+        System.out.println("Employee to be updated: "+ employee);
+        model.addAttribute("employee", employee);
+        return "update-form";
     }
 
 }
