@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{fragment/nav :: navbar}"></div>
+<div class="m-5 manager-form">
+    <!--    <button th:onclick="demo()">Click here</button>-->
+    <!--    Add manager form-->
+    <form action="#" th:action="@{/saveManager}" th:object="${manager}" method="POST">
+        <div class="form-group col-md-3">
+            <label for="fName">First Name:</label>
+            <input type="text" th:field="*{firstName}" class="form-control" id="fName">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="lName">Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" id="lName">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="department">Department</label>
+            <select id="department" th:field="*{department}" class="form-control">
+                <th:block th:each="dep: ${departments}">
+                    <option th:text="${dep.departmentName}" th:value="${dep.id}"></option>
+                </th:block>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

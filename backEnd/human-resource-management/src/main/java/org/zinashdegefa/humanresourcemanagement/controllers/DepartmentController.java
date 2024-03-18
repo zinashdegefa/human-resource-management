@@ -1,13 +1,14 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.zinashdegefa.humanresourcemanagement.models.Department;
-import org.zinashdegefa.humanresourcemanagement.models.Employee;
+import org.zinashdegefa.humanresourcemanagement.models.*;
 import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class DepartmentController {
 
     private final DepartmentService departmentService;
@@ -17,19 +18,21 @@ public class DepartmentController {
     }
 
     @PostMapping("/saveDepartment")
-    private String saveDepartment(@RequestBody Department department) {
+    private String saveDepartment(@ModelAttribute("department") Department department) {
+
+        System.out.println("Department to be updated:/saved "+ department);
         departmentService.saveDepartment(department);
-        return "Department Successfully added";
+        return "redirect:/getAllDepartments";
     }
 
     @GetMapping("/getAllDepartments")
 
-    public List<Department> departments() {
+    public String departments (Model model) {
         List<Department> departments = departmentService.getAllDepartments();
-
-        return departments;
-
+        model.addAttribute("departments", departments);
+        return "all-departments";
     }
+
 
     @GetMapping("/getDepartmentById/{departmentId}")
     public Department getDepartmentById(@PathVariable int departmentId){
@@ -37,10 +40,11 @@ public class DepartmentController {
         return departmentService.getDepartmentById(departmentId);
     }
 
-    @DeleteMapping("/department/delete/{departmentId}")
+    @RequestMapping("/department/delete/{departmentId}")
     public String deleteDepartment(@PathVariable int departmentId) {
         departmentService.deleteDepartment(departmentId);
-        return "Id number " + departmentId + " is deleted!";
+        System.out.println("Employee deleted for id: " + departmentId);
+        return "redirect:/getAllDepartments";
     }
 
     @PutMapping("/updateDepartment")
@@ -48,5 +52,13 @@ public class DepartmentController {
         departmentService.saveDepartment(department);
         System.out.println(department.getDepartmentName() + " is updated!");
         return department;
+    }
+
+    @RequestMapping("/addDepForm")
+    public String addForm(Model model) {
+//        List<Department> departments = departmentService.getAllDepartments();
+       Department department = new Department();
+        model.addAttribute("department", department);
+        return "add-dep-form";
     }
 }

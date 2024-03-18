@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All departments</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{fragment/nav :: navbar}"></div>
+
+<a th:href="@{/addLevForm}"><button class="btn btn-success m-2">Add Level</button></a>
+
+<!--    Display list of all levels-->
+
+
+<table class="table justify-content-center col-4">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Level Name</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lev: ${levels}">
+        <td th:text="${lev.id}"></td>
+        <td th:text="${lev.getLevelName()}"></td>
+
+        <td> <a class="btn btn-danger" th:href="@{/level/delete/{id}(id=${lev.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

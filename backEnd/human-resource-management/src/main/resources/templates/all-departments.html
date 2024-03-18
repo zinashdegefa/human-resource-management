@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All departments</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{fragment/nav :: navbar}"></div>
+
+<a th:href="@{/addDepForm}"><button class="btn btn-success m-2">Add Department</button></a>
+
+<!--    Display list of all departments-->
+
+<table class="table justify-content-center col-4">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Department Name</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dep: ${departments}">
+        <td th:text="${dep.id}"></td>
+        <td th:text="${dep.getDepartmentName()}"></td>
+
+        <td> <a class="btn btn-danger" th:href="@{/department/delete/{id}(id=${dep.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

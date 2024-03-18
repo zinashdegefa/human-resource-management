@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All managers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{fragment/nav :: navbar}"></div>
+
+<a th:href="@{/addManForm}"><button class="btn btn-success m-2">Add Manager</button></a>
+
+<!--    Display list of all managers-->
+
+<table class="table table justify-content-center col-4">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Department</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="man: ${managers}">
+        <td th:text="${man.id}"></td>
+        <td th:text="${man.firstName}"></td>
+        <td th:text="${man.lastName}"></td>
+        <td th:text="${man.department.getDepartmentName()}"></td>
+
+        <td> <a class="btn btn-danger" th:href="@{/manager/delete/{id}(id=${man.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

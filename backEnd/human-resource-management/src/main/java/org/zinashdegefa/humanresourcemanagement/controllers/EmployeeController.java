@@ -1,15 +1,12 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.zinashdegefa.humanresourcemanagement.models.*;
 import org.zinashdegefa.humanresourcemanagement.services.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class EmployeeController {
@@ -71,7 +68,7 @@ public class EmployeeController {
 //        return "redirect:/getAllEmployees";
 //    }
 
-    @RequestMapping("/addForm")
+    @RequestMapping("/addEmpForm")
     public String addForm(Model model) {
         List<Role> roles = roleService.getAllRoles();
         List<Level> levels = levelService.getAllLevels();
@@ -83,7 +80,7 @@ public class EmployeeController {
         model.addAttribute("levels", levels);
         model.addAttribute("departments", departments);
         model.addAttribute("managers", managers);
-        return "add-form";
+        return "add-emp-form";
     }
 
     @RequestMapping("/updateEmployee/{id}")

@@ -1,13 +1,16 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Employee;
 import org.zinashdegefa.humanresourcemanagement.models.Level;
 import org.zinashdegefa.humanresourcemanagement.services.LevelService;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class LevelController {
 
     private final LevelService levelService;
@@ -17,17 +20,19 @@ public class LevelController {
     }
 
     @PostMapping("/saveLevel")
-    private String saveLevel(@RequestBody Level level) {
+    private String saveLevel(@ModelAttribute("level") Level level) {
+        System.out.println("Level to be updated:/saved "+ level);
         levelService.saveLevel(level);
-        return "Level Successfully added";
+        return "redirect:/getAllLevels";
     }
 
     @GetMapping("/getAllLevels")
 
-    public List<Level> levels() {
+    public String levels(Model model) {
         List<Level> levels = levelService.getAllLevels();
+        model.addAttribute("levels", levels);
 
-        return levels;
+        return "all-levels";
     }
 
     @GetMapping("/getLevelById/{levelId}")
@@ -36,10 +41,11 @@ public class LevelController {
         return levelService.getLevelById(levelId);
     }
 
-    @DeleteMapping("/level/delete/{levelId}")
+    @RequestMapping ("/level/delete/{levelId}")
     public String deleteLevel(@PathVariable int levelId) {
         levelService.deleteLevel(levelId);
-        return "Id number " + levelId + " is deleted!";
+        System.out.println("Id number " + levelId + " is deleted!");
+        return "redirect:/getAllLevels";
     }
 
     @PutMapping("/updateLevel")
@@ -47,5 +53,12 @@ public class LevelController {
         levelService.saveLevel(level);
         System.out.println(level.getId() + " is updated!");
         return level;
+    }
+
+    @RequestMapping("/addLevForm")
+    public String addForm(Model model) {
+        Level level = new Level();
+        model.addAttribute("level", level);
+        return "add-lev-form";
     }
 }
