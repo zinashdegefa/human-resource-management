@@ -3,3 +3,25 @@
     background-color: #c4bdb2;
 
 }
+
+/*Registration Page*/
+#containerReg {
+    background-color: #fdfcfc;
+    width: 30%;
+
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(19, 18, 18, 0.59);
+    /* text-align: center; */
+    border-radius: 15px;
+}
+
+/*Login Page*/
+#containerLog {
+    background-color: #fdfcfc;
+    width: 40%;
+
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(19, 18, 18, 0.59);
+    /* text-align: center; */
+    border-radius: 15px;
+}

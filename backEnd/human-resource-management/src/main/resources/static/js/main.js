@@ -1,5 +1,5 @@
 
 function demo(){
-    alert("Hello!")
-    console.log("Hello from console log");
+    alert('Hello!')
+    console.log('Hello from console log');
 }

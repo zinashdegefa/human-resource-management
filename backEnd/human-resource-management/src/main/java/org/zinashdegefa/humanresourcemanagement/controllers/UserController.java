@@ -38,7 +38,7 @@ public class UserController {
         redirectAttributes.addFlashAttribute("message", "Successfully registered! Please login with your credentials");
         redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 
-        return "redirect:/login?success";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")

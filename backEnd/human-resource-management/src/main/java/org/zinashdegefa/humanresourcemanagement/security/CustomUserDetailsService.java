@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 import org.zinashdegefa.humanresourcemanagement.repositories.UserRepository;
 
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomStudentDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
-    public CustomStudentDetailsService(UserRepository userRepository) {
+    public CustomUserDetailsService(UserRepository userRepository) {
         super();
         this.userRepository = userRepository;
     }

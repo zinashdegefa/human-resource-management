@@ -24,6 +24,8 @@ public class SpringSecurity {
                 .authorizeHttpRequests()
                 .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/").permitAll()
+                .requestMatchers("/static/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/img/**", "**/favicon.ico").permitAll()
                 .requestMatchers("/getAll/**").hasRole("ADMIN")
                 .requestMatchers("/save/**").hasRole("ADMIN")
                 .requestMatchers("/add/**").hasRole("ADMIN")
