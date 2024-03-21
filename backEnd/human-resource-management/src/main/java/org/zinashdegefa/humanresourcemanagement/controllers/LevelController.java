@@ -19,14 +19,14 @@ public class LevelController {
         this.levelService = levelService;
     }
 
-    @PostMapping("/saveLevel")
+    @PostMapping("/save/level")
     private String saveLevel(@ModelAttribute("level") Level level) {
         System.out.println("Level to be updated:/saved "+ level);
         levelService.saveLevel(level);
-        return "redirect:/getAllLevels";
+        return "redirect:/getAll/levels";
     }
 
-    @GetMapping("/getAllLevels")
+    @GetMapping("/getAll/levels")
 
     public String levels(Model model) {
         List<Level> levels = levelService.getAllLevels();
@@ -41,21 +41,21 @@ public class LevelController {
         return levelService.getLevelById(levelId);
     }
 
-    @RequestMapping ("/level/delete/{levelId}")
+    @RequestMapping ("/delete/level/{levelId}")
     public String deleteLevel(@PathVariable int levelId) {
         levelService.deleteLevel(levelId);
         System.out.println("Id number " + levelId + " is deleted!");
-        return "redirect:/getAllLevels";
+        return "redirect:/getAll/levels";
     }
 
-    @PutMapping("/updateLevel")
+    @PutMapping("/update/level")
     public Level updateLevel(@RequestBody Level level) {
         levelService.saveLevel(level);
         System.out.println(level.getId() + " is updated!");
         return level;
     }
 
-    @RequestMapping("/addLevForm")
+    @RequestMapping("/add/levForm")
     public String addForm(Model model) {
         Level level = new Level();
         model.addAttribute("level", level);

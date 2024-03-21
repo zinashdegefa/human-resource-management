@@ -1,8 +1,11 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zinashdegefa.humanresourcemanagement.models.*;
 import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 
@@ -17,15 +20,43 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @PostMapping("/saveDepartment")
-    private String saveDepartment(@ModelAttribute("department") Department department) {
+    @PostMapping("/save/department")
+    private String saveDepartment(@Valid @ModelAttribute("department") Department department, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
+        System.out.println("Result for department: " + result);
+        System.out.println("Department to be saved "+ department);
 
-        System.out.println("Department to be updated:/saved "+ department);
+        Department existingDepartment = departmentService.getDepartmentByName(department.getDepartmentName());
+
+        if (existingDepartment != null && existingDepartment.getDepartmentName() != null && !existingDepartment.getDepartmentName().isEmpty()) {
+           result.rejectValue("departmentName", null, "There is already an account registered with the same name");
+        }
+
+        if(result.hasErrors()){
+            model.addAttribute("department", department);
+            return "/add-dep-form";
+        }
         departmentService.saveDepartment(department);
-        return "redirect:/getAllDepartments";
+        return "redirect:/getAll/departments";
     }
 
-    @GetMapping("/getAllDepartments")
+
+//    @PostMapping("/register/save")
+//    public String saveRegistration(@Valid @ModelAttribute("user") UserModel user, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
+//        System.out.println("user: " + user);
+//        System.out.println("Result: " + result);
+//        UserModel existingUser = userService.getUserByEmail(user.getEmail());
+//
+//        if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
+//            result.rejectValue("email", null, "There is already an account registered with the same email");
+//        }
+//
+//        if (result.hasErrors()) {
+//            model.addAttribute("user", user);
+//
+//            return "/register";
+//        }
+
+    @GetMapping("/getAll/departments")
 
     public String departments (Model model) {
         List<Department> departments = departmentService.getAllDepartments();
@@ -40,21 +71,21 @@ public class DepartmentController {
         return departmentService.getDepartmentById(departmentId);
     }
 
-    @RequestMapping("/department/delete/{departmentId}")
+    @RequestMapping("/delete/department/{departmentId}")
     public String deleteDepartment(@PathVariable int departmentId) {
         departmentService.deleteDepartment(departmentId);
-        System.out.println("Employee deleted for id: " + departmentId);
-        return "redirect:/getAllDepartments";
+        System.out.println("Department deleted for id: " + departmentId);
+        return "redirect:/getAll/departments";
     }
 
-    @PutMapping("/updateDepartment")
+    @PutMapping("/update/department")
     public Department updateDepartment(@RequestBody Department department) {
         departmentService.saveDepartment(department);
         System.out.println(department.getDepartmentName() + " is updated!");
         return department;
     }
 
-    @RequestMapping("/addDepForm")
+    @GetMapping("/add/depForm")
     public String addForm(Model model) {
 //        List<Department> departments = departmentService.getAllDepartments();
        Department department = new Department();

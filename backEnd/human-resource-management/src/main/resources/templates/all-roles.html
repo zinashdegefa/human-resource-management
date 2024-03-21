@@ -8,7 +8,7 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 
-<a th:href="@{/addRolForm}"><button class="btn btn-success m-2">Add Role</button></a>
+<a th:href="@{/add/roleForm}"><button class="btn btn-success m-2">Add Role</button></a>
 
 <!--    Display list of all roles-->
 
@@ -25,7 +25,7 @@
         <td th:text="${rol.id}"></td>
         <td th:text="${rol.getRoleName()}"></td>
 
-        <td> <a class="btn btn-danger" th:href="@{/role/delete/{id}(id=${rol.id})}">Delete</a></td>
+        <td> <a class="btn btn-danger" th:href="@{/delete/role/{id}(id=${rol.id})}">Delete</a></td>
     </tr>
     </tbody>
 </table>

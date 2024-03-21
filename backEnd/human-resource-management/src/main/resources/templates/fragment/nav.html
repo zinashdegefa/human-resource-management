@@ -6,25 +6,27 @@
                     <a class="nav-link text-white" th:href="@{/}" >Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/getAllEmployees}">All Employees</a>
+                    <a class="nav-link text-white" th:href="@{/getAll/employees}">Employees</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/getAllDepartments}">All Departments</a>
+                    <a class="nav-link text-white" th:href="@{/getAll/departments}">Departments</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/getAllLevels}">All Levels</a>
+                    <a class="nav-link text-white" th:href="@{/getAll/levels}">Levels</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/getAllManagers}">All Managers</a>
+                    <a class="nav-link text-white" th:href="@{/getAll/managers}">Managers</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/getAllRoles}">All Roles</a>
+                    <a class="nav-link text-white" th:href="@{/getAll/roles}">Roles</a>
                 </li>
+
             </ul>
+            <a class="btn btn-primary text-white" aria-current="page" th:href="@{/logout}">Logout</a>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

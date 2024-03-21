@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Employee;
+import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 import org.zinashdegefa.humanresourcemanagement.repositories.DepartmentRepository;
 import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 
@@ -58,5 +59,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void updateDepartment(Department department) {
 
         departmentRepository.save(department);
+    }
+
+    public Department getDepartmentByName(String name){
+
+        return departmentRepository.findByDepartmentName(name);
+
     }
 }

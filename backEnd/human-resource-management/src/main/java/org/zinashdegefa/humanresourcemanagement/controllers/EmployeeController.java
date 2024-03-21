@@ -30,15 +30,15 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("/saveEmployee")
+    @PostMapping("/save/employee")
     private String saveEmployee(@ModelAttribute("employee") Employee employee) {
 
         System.out.println("Employee to be updated:/saved "+ employee);
         employeeService.saveEmployee(employee);
-        return "redirect:/getAllEmployees";
+        return "redirect:/getAll/employees";
     }
 
-    @GetMapping("/getAllEmployees")
+    @GetMapping("/getAll/employees")
 
     public String employees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
@@ -54,21 +54,15 @@ public class EmployeeController {
         return "employee";
     }
 
-    @RequestMapping("/employee/delete/{employeeId}")
+    @RequestMapping("/delete/employee/{employeeId}")
     public String deleteEmployee(@PathVariable int employeeId) {
         employeeService.deleteEmployee(employeeId);
         System.out.println("Employee deleted for id: " + employeeId);
-        return "redirect:/getAllEmployees";
+        return "redirect:/getAll/employees";
     }
 
-//    @PutMapping("/updateEmployee")
-//    public String updateEmployee(@ModelAttribute("employee") Employee employee) {
-//        employeeService.saveEmployee(employee);
-//        System.out.println(employee.getFirstName() + " is updated!");
-//        return "redirect:/getAllEmployees";
-//    }
 
-    @RequestMapping("/addEmpForm")
+    @RequestMapping("/add/empForm")
     public String addForm(Model model) {
         List<Role> roles = roleService.getAllRoles();
         List<Level> levels = levelService.getAllLevels();
@@ -83,7 +77,7 @@ public class EmployeeController {
         return "add-emp-form";
     }
 
-    @RequestMapping("/updateEmployee/{id}")
+    @RequestMapping("/update/employee/{id}")
     public String updateForm(@PathVariable int id, Model model) {
         System.out.println("Id: " + id);
         Employee employee = employeeService.getEmployeeById(id);

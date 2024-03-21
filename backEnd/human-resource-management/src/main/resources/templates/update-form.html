@@ -13,7 +13,7 @@
 <div class="m-5 employee-form">
     <!--    <button th:onclick="demo()">Click here</button>-->
     <!--    Add employee form-->
-    <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+    <form action="#" th:action="@{/save/employee}" th:object="${employee}" method="post">
         <input type="hidden" th:field="*{id}">
         <div class="form-group col-md-6">
             <label for="fName">First Name:</label>

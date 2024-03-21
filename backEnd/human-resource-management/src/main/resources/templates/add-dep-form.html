@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Employee</title>
+    <title>Add Department</title>
     <link th:href="@{/css/main.css}" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/main.js}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
@@ -13,12 +13,18 @@
 <div class="m-5 department-form">
     <!--    <button th:onclick="demo()">Click here</button>-->
     <!--    Add department form-->
-    <form action="#" th:action="@{/saveDepartment}" th:object="${department}" method="POST">
+    <form   method="post"
+            role="form"
+            th:action="@{/save/department}"
+            th:object="${department}">
         <div class="form-group col-md-3">
             <label for="fName">Department Name:</label>
             <input type="text" th:field="*{departmentName}" class="form-control" id="fName">
+            <p th:errors = "*{departmentName}" class="text-danger"
+               th:if="${#fields.hasErrors('departmentName')}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
-
+</form>
+</div>
 </body>
 </html>

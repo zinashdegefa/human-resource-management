@@ -20,14 +20,14 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @PostMapping("/saveRole")
+    @PostMapping("/save/role")
     private String saveRole(@ModelAttribute("role") Role role) {
         System.out.println("Role to be updated:/saved "+ role);
         roleService.saveRole(role);
-        return "redirect:/getAllRoles";
+        return "redirect:/getAll/roles";
     }
 
-    @GetMapping("/getAllRoles")
+    @GetMapping("/getAll/roles")
 
     public String roles (Model model) {
         List<Role> roles = roleService.getAllRoles();
@@ -42,21 +42,21 @@ public class RoleController {
         return roleService.getRoleById(roleId);
     }
 
-    @RequestMapping("/role/delete/{roleId}")
+    @RequestMapping("/delete/role/{roleId}")
     public String deleteRole(@PathVariable int roleId) {
         System.out.println("Id number " + roleId + " is deleted!");
         roleService.deleteRole(roleId);
-        return "redirect:/getAllRoles";
+        return "redirect:/getAll/roles";
     }
 
-    @PutMapping("/updateRole")
+    @PutMapping("/update/role")
     public Role updateRole(@RequestBody Role role) {
         roleService.saveRole(role);
         System.out.println(role.getRoleName() + " is updated!");
         return role;
     }
 
-    @RequestMapping("/addRolForm")
+    @RequestMapping("/add/roleForm")
     public String addForm(Model model) {
         Role role = new Role();
         model.addAttribute("role", role);

@@ -8,7 +8,7 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 
-<a th:href="@{/addDepForm}"><button class="btn btn-success m-2">Add Department</button></a>
+<a th:href="@{/add/depForm}"><button class="btn btn-success m-2">Add Department</button></a>
 
 <!--    Display list of all departments-->
 
@@ -25,7 +25,7 @@
         <td th:text="${dep.id}"></td>
         <td th:text="${dep.getDepartmentName()}"></td>
 
-        <td> <a class="btn btn-danger" th:href="@{/department/delete/{id}(id=${dep.id})}">Delete</a></td>
+        <td> <a class="btn btn-danger" th:href="@{/delete/department/{id}(id=${dep.id})}">Delete</a></td>
     </tr>
     </tbody>
 </table>

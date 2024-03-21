@@ -2,12 +2,12 @@ package org.zinashdegefa.humanresourcemanagement.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Employee;
 import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 
-@Repository
-public interface DepartmentRepository extends JpaRepository<Department, Long> {
+import java.util.Optional;
 
-    Department findByDepartmentName(String departmentName);
+public interface UserRepository extends JpaRepository<UserModel, Long> {
+
+    UserModel findByEmail(String email);
 }

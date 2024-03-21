@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.services;
 
 import org.zinashdegefa.humanresourcemanagement.models.Department;
+import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface DepartmentService {
     void deleteDepartment(int departmentId);
     void updateDepartment(Department department);
     Department getDepartmentById(int departmentId);
+
+    Department getDepartmentByName(String name);
 }

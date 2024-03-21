@@ -8,6 +8,7 @@ import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.repositories.ManagerRepository;
 import org.zinashdegefa.humanresourcemanagement.services.ManagerService;
 
+import java.security.interfaces.ECKey;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,9 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public void saveManager(Manager manager) {
 
-        managerRepository.save(manager);
+
+            managerRepository.save(manager);
+
     }
 
     @Override
