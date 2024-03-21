@@ -25,7 +25,7 @@ public class SpringSecurity {
                 .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/static/**").permitAll()
-                .requestMatchers("/css/**", "/js/**", "/img/**", "**/favicon.ico").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "**/favicon.ico").permitAll()
                 .requestMatchers("/getAll/**").hasRole("ADMIN")
                 .requestMatchers("/save/**").hasRole("ADMIN")
                 .requestMatchers("/add/**").hasRole("ADMIN")

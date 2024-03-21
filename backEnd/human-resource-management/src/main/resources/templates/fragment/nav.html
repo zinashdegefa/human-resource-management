@@ -27,10 +27,26 @@
 
             </ul>
             <a class="btn btn-primary text-white" aria-current="page" th:href="@{/logout}">Logout</a>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+<!--            <form class="form-inline my-2 my-lg-0">-->
+<!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--            </form>-->
         </div>
     </nav>
+</div>
+
+<div th:fragment="footer" class="bg-dark">
+    <footer>
+        <p class="text-white">help@lipsum.com</p>
+        <p class="text-white"> Privacy Policy ·</p>
+        <div id="footerContainer" class="row">
+
+            <p><a class="col-3 facebook" href="#"><i class="fa fa-facebook"></i></a></p>
+            <p><a class="col-3 twitter" href="#"><i class="fa fa-twitter"></i></a></p>
+            <p><a class="col-3 dribbble" href="#"><i class="fa fa-dribbble"></i></a></p>
+            <p><a class="col-3 linkedin" href="#"><i class="fa fa-linkedin"></i></a></p>
+
+        </div>
+
+    </footer>
 </div>

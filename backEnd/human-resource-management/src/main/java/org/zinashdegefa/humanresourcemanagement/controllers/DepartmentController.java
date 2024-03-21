@@ -40,22 +40,6 @@ public class DepartmentController {
     }
 
 
-//    @PostMapping("/register/save")
-//    public String saveRegistration(@Valid @ModelAttribute("user") UserModel user, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
-//        System.out.println("user: " + user);
-//        System.out.println("Result: " + result);
-//        UserModel existingUser = userService.getUserByEmail(user.getEmail());
-//
-//        if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
-//            result.rejectValue("email", null, "There is already an account registered with the same email");
-//        }
-//
-//        if (result.hasErrors()) {
-//            model.addAttribute("user", user);
-//
-//            return "/register";
-//        }
-
     @GetMapping("/getAll/departments")
 
     public String departments (Model model) {

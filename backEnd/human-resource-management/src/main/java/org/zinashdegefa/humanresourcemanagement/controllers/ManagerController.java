@@ -27,7 +27,7 @@ public class ManagerController {
         try {
             managerService.saveManager(manager);
         } catch (Exception e) {
-            result.rejectValue("department", null, "There is already .....");  // TODO finish this
+            result.rejectValue("department", null, "The department already has a manager");
             List<Department> departments = departmentService.getAllDepartments();
             model.addAttribute("manager", manager);
             model.addAttribute("departments", departments);

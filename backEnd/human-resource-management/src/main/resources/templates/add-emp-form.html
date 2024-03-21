@@ -11,8 +11,8 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 <div class="m-5 employee-form col-md">
-    <button th:onclick="demo()">Click here</button>
-    Add employee form
+<!--    <button th:onclick="demo()">Click here</button>-->
+
     <form action="#" th:action="@{/save/employee}" th:object="${employee}" method="POST">
         <div class="form-group col-md-4">
             <label for="fName">First Name:</label>

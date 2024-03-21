@@ -1,6 +1,6 @@
 /*External css*/
 .employee-form{
-    background-color: #c4bdb2;
+    background-color: #f6f5f3;
 
 }
 
@@ -24,4 +24,15 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(19, 18, 18, 0.59);
     /* text-align: center; */
     border-radius: 15px;
+}
+
+.centered{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: rgb(12, 30, 238);
+    font-size: 40px;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-family: serif, fantasy;
 }
