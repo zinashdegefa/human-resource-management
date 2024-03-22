@@ -20,7 +20,7 @@ public class Level {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty(message = "Department Name is required")
+    @NotEmpty(message = "Level Name is required")
     @Column(nullable = false, unique=true)
     private String levelName;
 

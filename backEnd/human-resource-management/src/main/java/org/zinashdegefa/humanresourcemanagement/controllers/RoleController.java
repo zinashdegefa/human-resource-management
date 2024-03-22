@@ -1,9 +1,11 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Level;
 import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.models.Role;
@@ -22,11 +24,25 @@ public class RoleController {
     }
 
     @PostMapping("/save/role")
-    private String saveRole(@ModelAttribute("role") Role role) {
+    private String saveRole(@Valid @ModelAttribute("role") Role role, BindingResult result, Model model) {
         System.out.println("Role to be updated:/saved "+ role);
+
+
+        Role existingRole = roleService.getRoleByName(role.getRoleName());
+
+        if (existingRole != null && existingRole.getRoleName() != null && !existingRole.getRoleName().isEmpty()) {
+            result.rejectValue("roleName", null, "There is already a role registered with the same name");
+        }
+
+        if(result.hasErrors()){
+            model.addAttribute("role", role);
+            return "/add-rol-form";
+        }
+
         roleService.saveRole(role);
         return "redirect:/getAll/roles";
     }
+
 
     @GetMapping("/getAll/roles")
 

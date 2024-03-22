@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Getter
@@ -17,5 +18,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotEmpty(message = "Role Name is required")
+    @Column(nullable = false, unique=true)
     private String roleName;
 }

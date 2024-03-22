@@ -16,7 +16,10 @@
     <form action="#" th:action="@{/save/role}" th:object="${role}" method="POST">
         <div class="form-group col-md-3">
             <label for="fName">Role Name:</label>
-            <input type="text" th:field="*{roleName}" class="form-control" id="fName" th:required="required">
+            <input type="text" th:field="*{roleName}" class="form-control" id="fName">
+
+            <p th:errors = "*{roleName}" class="text-danger"
+               th:if="${#fields.hasErrors('roleName')}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>

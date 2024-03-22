@@ -2,6 +2,7 @@ package org.zinashdegefa.humanresourcemanagement.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.models.Role;
 import org.zinashdegefa.humanresourcemanagement.repositories.RoleRepository;
@@ -57,5 +58,11 @@ public class RoleServiceImpl implements RoleService {
     public void updateRole(Role role) {
 
         roleRepository.save(role);
+    }
+
+    public Role getRoleByName(String roleName){
+
+        return roleRepository.findByRoleName(roleName);
+
     }
 }

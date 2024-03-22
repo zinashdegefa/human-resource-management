@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import com.mysql.cj.util.StringUtils;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +24,7 @@ public class LevelController {
     }
 
     @PostMapping("/save/level")
-    private String saveLevel(@ModelAttribute("level") Level level, BindingResult result, Model model) {
+    private String saveLevel(@Valid @ModelAttribute("level") Level level, BindingResult result, Model model) {
         System.out.println("Level to be updated:/saved "+ level);
         Level existingLevel = levelService.getLevelByName(level.getLevelName());
 
