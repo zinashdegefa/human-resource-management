@@ -55,8 +55,16 @@ public class ManagerController {
 
     @RequestMapping("/delete/manager/{managerId}")
     public String deleteDepartment(@PathVariable int managerId) {
-        managerService.deleteManager(managerId);
-        return "redirect:/getAll/managers";
+
+        try{
+            managerService.deleteManager(managerId);
+            System.out.println("Id number " + managerId + " is deleted!");
+            return "redirect:/getAll/managers";
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+            return "redirect:/getAll/managers?failed";
+        }
+
     }
 
     @PutMapping("/update/manager") // TODO finish this

@@ -10,6 +10,13 @@
 
 <a th:href="@{/add/levForm}"><button class="btn btn-success m-2">Add Level</button></a>
 
+<!--Error Message-->
+
+<div th:if="${param.failed}">
+    <div class="alert alert-danger">
+        You can not delete this level!
+    </div>
+</div>
 <!--    Display list of all levels-->
 
 

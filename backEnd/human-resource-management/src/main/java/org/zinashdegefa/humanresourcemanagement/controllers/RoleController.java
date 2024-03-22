@@ -2,6 +2,7 @@ package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.zinashdegefa.humanresourcemanagement.models.Level;
 import org.zinashdegefa.humanresourcemanagement.models.Manager;
@@ -44,9 +45,15 @@ public class RoleController {
 
     @RequestMapping("/delete/role/{roleId}")
     public String deleteRole(@PathVariable int roleId) {
-        System.out.println("Id number " + roleId + " is deleted!");
-        roleService.deleteRole(roleId);
-        return "redirect:/getAll/roles";
+
+       try{
+           roleService.deleteRole(roleId);
+           System.out.println("Id number " + roleId + " is deleted!");
+           return "redirect:/getAll/roles";
+       } catch (Exception e) {
+           System.out.println("Exception: " + e);
+           return "redirect:/getAll/roles?failed";
+       }
     }
 
     @PutMapping("/update/role")

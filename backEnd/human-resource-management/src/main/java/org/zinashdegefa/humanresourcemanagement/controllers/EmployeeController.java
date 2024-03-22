@@ -3,7 +3,9 @@ package org.zinashdegefa.humanresourcemanagement.controllers;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zinashdegefa.humanresourcemanagement.models.*;
 import org.zinashdegefa.humanresourcemanagement.services.*;
 
@@ -32,9 +34,23 @@ public class EmployeeController {
 
 
     @PostMapping("/save/employee")
-    private String saveEmployee(@ModelAttribute("employee") Employee employee) {
+    private String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
 
         System.out.println("Employee to be updated:/saved "+ employee);
+
+        if(result.hasErrors()){
+            List<Role> roles = roleService.getAllRoles();
+            List<Level> levels = levelService.getAllLevels();
+            List<Department> departments = departmentService.getAllDepartments();
+            List<Manager> managers = managerService.getAllManagers();
+            model.addAttribute("employee", employee);
+            model.addAttribute("roles", roles);
+            model.addAttribute("levels", levels);
+            model.addAttribute("departments", departments);
+            model.addAttribute("managers", managers);
+            model.addAttribute("employee", employee);
+            return "/add-emp-form";
+        }
         employeeService.saveEmployee(employee);
         return "redirect:/getAll/employees";
     }

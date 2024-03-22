@@ -19,8 +19,12 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotEmpty(message = "First Name is required")
+    @Column(nullable = false, unique=true)
     private String firstName;
 
+    @NotEmpty(message = "Last Name is required")
+    @Column(nullable = false, unique=true)
     private String lastName;
 
     @ManyToOne

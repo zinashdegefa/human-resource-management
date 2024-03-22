@@ -1,8 +1,11 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
+import com.mysql.cj.util.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Employee;
 import org.zinashdegefa.humanresourcemanagement.models.Level;
@@ -20,8 +23,18 @@ public class LevelController {
     }
 
     @PostMapping("/save/level")
-    private String saveLevel(@ModelAttribute("level") Level level) {
+    private String saveLevel(@ModelAttribute("level") Level level, BindingResult result, Model model) {
         System.out.println("Level to be updated:/saved "+ level);
+        Level existingLevel = levelService.getLevelByName(level.getLevelName());
+
+        if (existingLevel != null && !StringUtils.isNullOrEmpty(existingLevel.getLevelName())) {
+           result.rejectValue("levelName", null, "There is already a level registered with the same name");
+       }
+
+        if(result.hasErrors()){
+           model.addAttribute("level", level);
+            return "/add-lev-form";
+       }
         levelService.saveLevel(level);
         return "redirect:/getAll/levels";
     }
@@ -43,9 +56,14 @@ public class LevelController {
 
     @RequestMapping ("/delete/level/{levelId}")
     public String deleteLevel(@PathVariable int levelId) {
-        levelService.deleteLevel(levelId);
-        System.out.println("Id number " + levelId + " is deleted!");
-        return "redirect:/getAll/levels";
+        try{
+            levelService.deleteLevel(levelId);
+            System.out.println("Id number " + levelId + " is deleted!");
+            return "redirect:/getAll/levels";
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+            return "redirect:/getAll/levels?failed";
+        }
     }
 
     @PutMapping("/update/level")

@@ -8,8 +8,6 @@
 #containerReg {
     background-color: #fdfcfc;
     width: 30%;
-
-
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(19, 18, 18, 0.59);
     /* text-align: center; */
     border-radius: 15px;
@@ -36,3 +34,9 @@
     font-weight: bold;
     font-family: serif, fantasy;
 }
+
+/*#page-container {*/
+/*    background-color: #989595;*/
+/*    width: 50%;*/
+
+/*}*/

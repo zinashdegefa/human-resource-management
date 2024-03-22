@@ -10,6 +10,12 @@
 
 <a th:href="@{/add/depForm}"><button class="btn btn-success m-2">Add Department</button></a>
 
+<div th:if="${param.failed}">
+    <div class="alert alert-danger">
+        You can not delete this department!
+    </div>
+</div>
+
 <!--    Display list of all departments-->
 
 <table class="table justify-content-center col-4">

@@ -10,6 +10,12 @@
 
 <a th:href="@{/add/manForm}"><button class="btn btn-success m-2">Add Manager</button></a>
 
+<div th:if="${param.failed}">
+    <div class="alert alert-danger">
+        You can not delete the manager!
+    </div>
+</div>
+
 <!--    Display list of all managers-->
 
 <table class="table table justify-content-center col-4">

@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.lang.annotation.Documented;
@@ -18,6 +19,9 @@ public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotEmpty(message = "Department Name is required")
+    @Column(nullable = false, unique=true)
     private String levelName;
 
 

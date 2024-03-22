@@ -16,7 +16,9 @@
     <form action="#" th:action="@{/save/level}" th:object="${level}" method="POST">
         <div class="form-group col-md-3">
             <label for="fName">Level Name:</label>
-            <input type="text" th:field="*{levelName}" class="form-control" id="fName" th:required="required">
+            <input type="text" th:field="*{levelName}" class="form-control" id="fName">
+            <p th:errors = "*{levelName}" class="text-danger"
+               th:if="${#fields.hasErrors('levelName')}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
         </form>

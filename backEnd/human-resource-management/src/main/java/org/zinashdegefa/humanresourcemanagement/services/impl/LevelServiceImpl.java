@@ -2,6 +2,7 @@ package org.zinashdegefa.humanresourcemanagement.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Employee;
 import org.zinashdegefa.humanresourcemanagement.models.Level;
 import org.zinashdegefa.humanresourcemanagement.repositories.LevelRepository;
@@ -58,5 +59,11 @@ public class LevelServiceImpl implements LevelService {
     public void updateLevel(Level level) {
 
         levelRepository.save(level);
+    }
+
+    public Level getLevelByName(String levelName){
+
+        return levelRepository.findByLevelName(levelName);
+
     }
 }

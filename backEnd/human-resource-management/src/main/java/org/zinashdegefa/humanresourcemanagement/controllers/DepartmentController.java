@@ -21,14 +21,14 @@ public class DepartmentController {
     }
 
     @PostMapping("/save/department")
-    private String saveDepartment(@Valid @ModelAttribute("department") Department department, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
+    private String saveDepartment(@Valid @ModelAttribute("department") Department department, BindingResult result, Model model) {
         System.out.println("Result for department: " + result);
         System.out.println("Department to be saved "+ department);
 
         Department existingDepartment = departmentService.getDepartmentByName(department.getDepartmentName());
 
         if (existingDepartment != null && existingDepartment.getDepartmentName() != null && !existingDepartment.getDepartmentName().isEmpty()) {
-           result.rejectValue("departmentName", null, "There is already an account registered with the same name");
+           result.rejectValue("departmentName", null, "There is already a department registered with the same name");
         }
 
         if(result.hasErrors()){
@@ -57,9 +57,15 @@ public class DepartmentController {
 
     @RequestMapping("/delete/department/{departmentId}")
     public String deleteDepartment(@PathVariable int departmentId) {
-        departmentService.deleteDepartment(departmentId);
-        System.out.println("Department deleted for id: " + departmentId);
-        return "redirect:/getAll/departments";
+
+        try{
+            departmentService.deleteDepartment(departmentId);
+            System.out.println("Id number " + departmentId + " is deleted!");
+            return "redirect:/getAll/departments";
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+            return "redirect:/getAll/departments?failed";
+        }
     }
 
     @PutMapping("/update/department")
