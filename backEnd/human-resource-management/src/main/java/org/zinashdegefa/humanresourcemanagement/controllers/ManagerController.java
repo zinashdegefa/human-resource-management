@@ -1,5 +1,6 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,7 +23,7 @@ public class ManagerController {
     }
 
     @PostMapping("/save/manager")
-    private String saveManager(@ModelAttribute("manager") Manager manager, BindingResult result, Model model) {
+    private String saveManager(@Valid @ModelAttribute("manager") Manager manager, BindingResult result, Model model) {
         System.out.println("Manager to be updated:/saved " + manager);
         try {
             managerService.saveManager(manager);
@@ -33,6 +34,12 @@ public class ManagerController {
             model.addAttribute("departments", departments);
             return "/add-man-form";
         }
+
+        if(result.hasErrors()){
+            model.addAttribute("manager", manager);
+            return "/add-man-form";
+        }
+        managerService.saveManager(manager);
 
         return "redirect:/getAll/managers";
     }

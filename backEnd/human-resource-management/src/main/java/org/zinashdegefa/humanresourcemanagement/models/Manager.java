@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Getter
@@ -17,9 +18,14 @@ public class Manager {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotEmpty(message = "First Name is required")
+    @Column(nullable = false, unique=true)
     private String firstName;
 
+    @NotEmpty(message = "Last Name is required")
+    @Column(nullable = false, unique=true)
     private String lastName;
+
     @OneToOne
     @JoinColumn(name = "department_id")
     private Department department;
