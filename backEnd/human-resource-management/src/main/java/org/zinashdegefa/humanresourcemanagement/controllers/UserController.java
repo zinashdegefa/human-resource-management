@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 import org.zinashdegefa.humanresourcemanagement.services.UserService;
 
+// User Controller to validate registration
 @Controller
 @RequiredArgsConstructor
 public class UserController {

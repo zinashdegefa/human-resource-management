@@ -7,6 +7,8 @@ import lombok.*;
 import java.lang.annotation.Documented;
 import java.util.Set;
 
+//  Level Model Class
+
 @Getter
 @Setter
 @AllArgsConstructor

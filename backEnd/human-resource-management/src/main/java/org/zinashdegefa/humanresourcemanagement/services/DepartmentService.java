@@ -5,6 +5,8 @@ import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 
 import java.util.List;
 
+// Department Service Interface
+
 public interface DepartmentService {
     void saveDepartment(Department department);
     List<Department> getAllDepartments();

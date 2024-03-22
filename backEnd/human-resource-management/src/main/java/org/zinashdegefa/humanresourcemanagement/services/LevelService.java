@@ -6,6 +6,8 @@ import org.zinashdegefa.humanresourcemanagement.models.Level;
 
 import java.util.List;
 
+// Level Service Interface
+
 public interface LevelService {
 
     void saveLevel(Level level);

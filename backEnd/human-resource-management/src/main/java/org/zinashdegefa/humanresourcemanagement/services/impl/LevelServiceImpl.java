@@ -11,6 +11,8 @@ import org.zinashdegefa.humanresourcemanagement.services.LevelService;
 import java.util.List;
 import java.util.Optional;
 
+// Level Service Implementation class
+
 @Service
 public class LevelServiceImpl implements LevelService {
 

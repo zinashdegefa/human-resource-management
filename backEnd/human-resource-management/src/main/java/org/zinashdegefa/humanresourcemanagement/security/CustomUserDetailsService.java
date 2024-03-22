@@ -10,6 +10,8 @@ import org.zinashdegefa.humanresourcemanagement.repositories.UserRepository;
 
 import java.util.stream.Collectors;
 
+// Custom User Details Service Class to validate email and password
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 

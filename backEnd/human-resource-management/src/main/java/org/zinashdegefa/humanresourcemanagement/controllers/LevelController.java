@@ -14,6 +14,7 @@ import org.zinashdegefa.humanresourcemanagement.services.LevelService;
 
 import java.util.List;
 
+// Level Controller with CRUD path
 @Controller
 public class LevelController {
 

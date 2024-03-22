@@ -11,7 +11,7 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 <div class="m-5 manager-form">
-    <!--    <button th:onclick="demo()">Click here</button>-->
+
     <!--    Add manager form-->
     <form action="#" th:action="@{/save/manager}" th:object="${manager}" method="POST">
         <div class="form-group col-md-3">

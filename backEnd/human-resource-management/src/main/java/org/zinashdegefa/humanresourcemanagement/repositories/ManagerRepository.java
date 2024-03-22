@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface ManagerRepository extends JpaRepository<Manager, Long> {
 
+    // Custom method to get Manager by DepartmentId
     Optional<Manager> findByDepartmentId(int id);
 }

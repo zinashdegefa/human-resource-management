@@ -11,6 +11,8 @@ import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 import java.util.List;
 import java.util.Optional;
 
+// Department Service Implementation class
+
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 

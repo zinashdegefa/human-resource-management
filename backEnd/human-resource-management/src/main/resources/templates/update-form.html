@@ -11,8 +11,9 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 <div class="m-5 employee-form">
-    <!--    <button th:onclick="demo()">Click here</button>-->
-    <!--    Add employee form-->
+
+    <!--    Update employee form-->
+
     <form action="#" th:action="@{/save/employee}" th:object="${employee}" method="post">
         <input type="hidden" th:field="*{id}">
         <div class="form-group col-md-6">

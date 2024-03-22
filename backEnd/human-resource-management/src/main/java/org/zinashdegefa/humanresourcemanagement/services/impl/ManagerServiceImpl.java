@@ -12,6 +12,8 @@ import java.security.interfaces.ECKey;
 import java.util.List;
 import java.util.Optional;
 
+// Manager Service Implementation class
+
 @Service
 public class ManagerServiceImpl implements ManagerService {
 

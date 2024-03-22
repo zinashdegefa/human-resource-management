@@ -9,6 +9,8 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
+//  UserRole Model Class
+
 @Entity
 @Setter
 @Getter

@@ -9,5 +9,6 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
+    // Custom method to get User by Email
     UserModel findByEmail(String email);
 }

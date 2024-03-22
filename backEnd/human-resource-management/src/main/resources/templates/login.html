@@ -9,6 +9,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<!--Login page-->
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
 
 <div>
@@ -25,12 +26,6 @@
                 <div>
                     <h2 class="text-center">Login Form</h2>
                 </div>
-
-<!--                <div th:if="${param.success}">-->
-<!--                    <div class="alert alert-info">-->
-<!--                        You have successfully registered!-->
-<!--                    </div>-->
-<!--                </div>-->
 
                 <div class="card-body container mt-5" id="containerLog">
                     <form  method="post"

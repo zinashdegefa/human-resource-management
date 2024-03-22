@@ -5,6 +5,7 @@ import org.zinashdegefa.humanresourcemanagement.models.Role;
 
 import java.util.List;
 
+// Role Service Interface
 public interface RoleService {
 
     void saveRole(Role role);

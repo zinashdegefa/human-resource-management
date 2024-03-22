@@ -13,6 +13,7 @@ import org.zinashdegefa.humanresourcemanagement.services.RoleService;
 
 import java.util.List;
 
+// Role Controller with CRUD path
 @Controller
 public class RoleController {
 

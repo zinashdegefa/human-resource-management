@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+//  Manager Model Class
+
 @Getter
 @Setter
 @AllArgsConstructor

@@ -11,6 +11,8 @@ import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 
 import java.util.List;
 
+
+// Department Controller with CRUD path
 @Controller
 public class DepartmentController {
 

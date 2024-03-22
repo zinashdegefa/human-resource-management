@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+//  Role Model Class
 @Getter
 @Setter
 @AllArgsConstructor

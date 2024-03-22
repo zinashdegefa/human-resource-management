@@ -11,6 +11,8 @@ import org.zinashdegefa.humanresourcemanagement.services.*;
 
 import java.util.List;
 
+// Employee Controller with CRUD path
+
 @Controller
 public class EmployeeController {
     private final EmployeeService employeeService;

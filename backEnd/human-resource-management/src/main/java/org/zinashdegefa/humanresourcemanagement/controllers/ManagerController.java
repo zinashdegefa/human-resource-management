@@ -11,6 +11,8 @@ import org.zinashdegefa.humanresourcemanagement.services.ManagerService;
 
 import java.util.List;
 
+
+// Manager Controller with CRUD path
 @Controller
 public class ManagerController {
 

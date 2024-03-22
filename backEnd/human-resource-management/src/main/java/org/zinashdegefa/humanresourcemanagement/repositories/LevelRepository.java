@@ -7,5 +7,7 @@ import org.zinashdegefa.humanresourcemanagement.models.Level;
 
 @Repository
 public interface LevelRepository extends JpaRepository<Level, Long> {
+
+    // Custom method to find Level by name
     Level findByLevelName(String levelName);
 }

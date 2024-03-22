@@ -9,5 +9,6 @@ import org.zinashdegefa.humanresourcemanagement.models.UserModel;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
+// Custom method to find Department by name
     Department findByDepartmentName(String departmentName);
 }

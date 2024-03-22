@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+//  Employee Model Class
+
 @Getter
 @Setter
 @AllArgsConstructor

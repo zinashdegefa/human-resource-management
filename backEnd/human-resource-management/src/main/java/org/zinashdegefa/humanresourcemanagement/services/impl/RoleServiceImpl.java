@@ -11,6 +11,8 @@ import org.zinashdegefa.humanresourcemanagement.services.RoleService;
 import java.util.List;
 import java.util.Optional;
 
+// Role Service Implementation class
+
 @Service
 public class RoleServiceImpl implements RoleService {
 

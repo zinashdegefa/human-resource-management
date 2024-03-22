@@ -12,6 +12,8 @@ import org.zinashdegefa.humanresourcemanagement.services.UserService;
 import java.util.Arrays;
 import java.util.Optional;
 
+// User Service Implementation class
+
 @Service
 public class UserServiceImpl implements UserService {
 

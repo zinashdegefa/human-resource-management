@@ -4,6 +4,8 @@ import org.zinashdegefa.humanresourcemanagement.models.Employee;
 
 import java.util.List;
 
+// Employee Service Interface
+
 public interface EmployeeService {
     void saveEmployee(Employee employee);
 
