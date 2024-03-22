@@ -25,17 +25,21 @@ public class ManagerController {
     @PostMapping("/save/manager")
     private String saveManager(@Valid @ModelAttribute("manager") Manager manager, BindingResult result, Model model) {
         System.out.println("Manager to be updated:/saved " + manager);
-        try {
-            managerService.saveManager(manager);
-        } catch (Exception e) {
-            result.rejectValue("department", null, "The department already has a manager");
+
+    if (manager.getDepartment() != null) {
+        Manager existingManager = managerService.getManagerByDepartmentId(manager.getDepartment().getId());
+
+        System.out.println("Existing manger: " + existingManager);
+
+        if (existingManager != null && existingManager.getDepartment() != null && !existingManager.getDepartment().getDepartmentName().isEmpty()) {
+            result.rejectValue("department", null, "A manager is already assigned to this department");
+        }
+
+    }
+        if (result.hasErrors()) {
             List<Department> departments = departmentService.getAllDepartments();
             model.addAttribute("manager", manager);
             model.addAttribute("departments", departments);
-            return "/add-man-form";
-        }
-
-        if(result.hasErrors()){
             model.addAttribute("manager", manager);
             return "/add-man-form";
         }
@@ -63,7 +67,7 @@ public class ManagerController {
     @RequestMapping("/delete/manager/{managerId}")
     public String deleteDepartment(@PathVariable int managerId) {
 
-        try{
+        try {
             managerService.deleteManager(managerId);
             System.out.println("Id number " + managerId + " is deleted!");
             return "redirect:/getAll/managers";

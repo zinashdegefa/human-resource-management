@@ -21,7 +21,7 @@
             <th scope="col">Level</th>
             <th scope="col">Department</th>
             <th scope="col">Manager</th>
-            <th>Action</th>
+            <th colspan="2">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -29,10 +29,22 @@
             <td th:text="${em.id}"></td>
             <td th:text="${em.firstName}"></td>
             <td th:text="${em.lastName}"></td>
-            <td th:text="${em.role.getRoleName()}"></td>
-            <td th:text="${em.level.getLevelName()}"></td>
-            <td th:text="${em.department.getDepartmentName()}"></td>
-            <td th:text="${em.manager.getFirstName()}"></td>
+            <td>
+                <span th:if="${em.role} != null" th:text="${em.role.getRoleName()}"></span>
+                <span th:if="${em.role} == null">N/A</span>
+            </td>
+            <td>
+                <span th:if="${em.level} != null" th:text="${em.level.getLevelName()}"></span>
+                <span th:if="${em.level} == null">N/A</span>
+            </td>
+            <td>
+                <span th:if="${em.department} != null" th:text="${em.department.getDepartmentName()}"></span>
+                <span th:if="${em.department} == null">N/A</span>
+            </td>
+            <td>
+                <span th:if="${em.manager} != null" th:text="${em.manager.getFirstName()}"></span>
+                <span th:if="${em.manager} == null">N/A</span>
+            </td>
 
             <td><a class="btn btn-success" th:href="@{/update/employee/{id}(id=${em.id})}">Update</a></td>
             <td> <a class="btn btn-danger" th:href="@{/delete/employee/{id}(id=${em.id})}">Delete</a></td>

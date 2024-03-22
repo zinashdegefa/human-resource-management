@@ -19,11 +19,11 @@ public class Manager {
     private int id;
 
     @NotEmpty(message = "First Name is required")
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String firstName;
 
     @NotEmpty(message = "Last Name is required")
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String lastName;
 
     @OneToOne

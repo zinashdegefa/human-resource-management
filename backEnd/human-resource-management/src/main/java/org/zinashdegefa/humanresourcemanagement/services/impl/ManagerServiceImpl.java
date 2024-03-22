@@ -24,10 +24,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public void saveManager(Manager manager) {
-
-
             managerRepository.save(manager);
-
     }
 
     @Override
@@ -51,6 +48,17 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     @Transactional
+    public Manager getManagerByDepartmentId(int managerId) {
+        Optional<Manager> getManagerById = managerRepository.findByDepartmentId(managerId);
+        if (getManagerById.isPresent()) {
+            System.out.println("The Id of the manager is " + getManagerById.get().getId());
+            return getManagerById.get();
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
     public void deleteManager(int managerId) {
         managerRepository.deleteById((long) managerId);
         System.out.println("The manager with id number "  + managerId + " is deleted!");
@@ -59,7 +67,6 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     @Transactional
     public void updateManager(Manager manager) {
-
         managerRepository.save(manager);
     }
 }

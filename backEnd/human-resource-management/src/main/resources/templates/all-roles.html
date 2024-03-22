@@ -10,8 +10,8 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 
-<div>
-    <a th:href="@{/add/roleForm}"><button class="btn btn-success m-2">Add Role</button></a>
+<div class="m-5">
+    <a th:href="@{/add/roleForm}"><button class="btn btn-success">Add Role</button></a>
 
 
     <!--Error message-->
@@ -21,11 +21,13 @@
         </div>
     </div>
     <!--    Display list of all roles-->
-    <table class="table justify-content-center col-4">
+<div class="m-2">
+    <table class="table justify-content-center col-2">
         <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Role Name</th>
+            <th>Action</th>
 
         </tr>
         </thead>
@@ -40,6 +42,7 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>
 
 </body>

@@ -12,4 +12,5 @@ public interface ManagerService {
     void deleteManager(int managerId);
     public void updateManager(Manager manager);
     Manager getManagerById(int managerId);
+    Manager getManagerByDepartmentId(int managerId);
 }

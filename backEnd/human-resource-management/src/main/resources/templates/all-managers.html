@@ -8,36 +8,43 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 
-<a th:href="@{/add/manForm}"><button class="btn btn-success m-2">Add Manager</button></a>
+<div class="m-5">
+    <a th:href="@{/add/manForm}"><button class="btn btn-success">Add Manager</button></a>
 
-<div th:if="${param.failed}">
-    <div class="alert alert-danger">
-        You can not delete the manager!
+    <div th:if="${param.failed}">
+        <div class="alert alert-danger">
+            You can not delete this manager!
+        </div>
     </div>
+
+    <!--    Display list of all managers-->
+
+    <table class="table table justify-content-center col-4">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Department</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="man: ${managers}">
+            <td th:text="${man.id}"></td>
+            <td th:text="${man.firstName}"></td>
+            <td th:text="${man.lastName}"></td>
+            <td>
+                <span th:if="${man.department} != null" th:text="${man.department.getDepartmentName()}"></span>
+                <span th:if="${man.department} == null">N/A</span>
+            </td>
+
+            <td> <a class="btn btn-danger" th:href="@{/delete/manager/{id}(id=${man.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
-<!--    Display list of all managers-->
 
-<table class="table table justify-content-center col-4">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Department</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="man: ${managers}">
-        <td th:text="${man.id}"></td>
-        <td th:text="${man.firstName}"></td>
-        <td th:text="${man.lastName}"></td>
-        <td th:text="${man.department.getDepartmentName()}"></td>
-
-        <td> <a class="btn btn-danger" th:href="@{/delete/manager/{id}(id=${man.id})}">Delete</a></td>
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>

@@ -8,35 +8,37 @@
 <body>
 <div th:replace="~{fragment/nav :: navbar}"></div>
 
-<a th:href="@{/add/levForm}"><button class="btn btn-success m-2">Add Level</button></a>
+<div class="m-5">
+    <a th:href="@{/add/levForm}"><button class="btn btn-success">Add Level</button></a>
 
-<!--Error Message-->
+    <!--Error Message-->
 
-<div th:if="${param.failed}">
-    <div class="alert alert-danger">
-        You can not delete this level!
+    <div th:if="${param.failed}">
+        <div class="alert alert-danger">
+            You can not delete this level!
+        </div>
     </div>
+    <!--    Display list of all levels-->
+
+
+    <table class="table justify-content-center col-2">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Level Name</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lev: ${levels}">
+            <td th:text="${lev.id}"></td>
+            <td th:text="${lev.getLevelName()}"></td>
+
+            <td> <a class="btn btn-danger" th:href="@{/delete/level/{id}(id=${lev.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-<!--    Display list of all levels-->
-
-
-<table class="table justify-content-center col-4">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Level Name</th>
-        <th>Action</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="lev: ${levels}">
-        <td th:text="${lev.id}"></td>
-        <td th:text="${lev.getLevelName()}"></td>
-
-        <td> <a class="btn btn-danger" th:href="@{/delete/level/{id}(id=${lev.id})}">Delete</a></td>
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>
