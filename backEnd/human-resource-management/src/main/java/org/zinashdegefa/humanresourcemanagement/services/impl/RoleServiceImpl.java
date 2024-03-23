@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void saveRole(Role role) {
-
+       role.setRoleName(role.getRoleName().trim()); //Trim the name before saving
         roleRepository.save(role);
     }
 
@@ -63,8 +63,6 @@ public class RoleServiceImpl implements RoleService {
     }
 
     public Role getRoleByName(String roleName){
-
-        return roleRepository.findByRoleName(roleName);
-
+        return roleRepository.findByRoleName(roleName.trim());
     }
 }
