@@ -11,6 +11,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @ToString
 @Entity
+@Builder
 @Table(name = "department")
 public class Department {
     @Column(name = "department_id")

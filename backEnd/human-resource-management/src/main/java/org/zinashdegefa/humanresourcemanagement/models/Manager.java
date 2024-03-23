@@ -11,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @ToString
+@Builder
 @Entity
 @Table(name = "manager")
 public class Manager {
@@ -28,7 +29,7 @@ public class Manager {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "department_id")
     private Department department;
 }

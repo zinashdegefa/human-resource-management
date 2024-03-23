@@ -67,10 +67,10 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployeeById/{employeeId}")
-    public String getEmployeeById(@PathVariable int employeeId, Model model) {
+    public Employee getEmployeeById(@PathVariable int employeeId, Model model) {
         Employee employee = employeeService.getEmployeeById(employeeId);
         model.addAttribute("emp", employee);
-        return "employee";
+        return employee;
     }
 
     @RequestMapping("/delete/employee/{employeeId}")

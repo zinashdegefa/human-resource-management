@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
-import java.lang.annotation.Documented;
-import java.util.Set;
-
 //  Level Model Class
 
 @Getter
@@ -14,6 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @ToString
+@Builder
 @Entity
 @Table(name = "level")
 public class Level {

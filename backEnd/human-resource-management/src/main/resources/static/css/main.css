@@ -1,7 +1,10 @@
 /*External css*/
-.employee-form{
-    background-color: #f6f5f3;
 
+#formBody {
+    background-color: #fcf4e1;
+}
+#displayBody{
+    background-color: #e5e2de;
 }
 
 /*Registration Page*/

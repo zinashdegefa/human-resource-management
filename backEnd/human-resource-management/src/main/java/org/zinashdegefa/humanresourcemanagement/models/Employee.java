@@ -13,6 +13,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @ToString
 @Entity
+@Builder
 @Table(name = "employee")
 public class Employee {
 
@@ -29,19 +30,19 @@ public class Employee {
     @Column(nullable = false)
     private String lastName;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "level_id")
     private Level level;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_id")
     private Manager manager;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "department_id")
     private Department department;
 
