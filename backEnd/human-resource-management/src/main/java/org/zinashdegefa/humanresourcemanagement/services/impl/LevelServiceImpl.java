@@ -26,6 +26,8 @@ public class LevelServiceImpl implements LevelService {
     @Override
     public void saveLevel(Level level) {
 
+        level.setLevelName(level.getLevelName().trim()); //Trim the name before saving
+
         levelRepository.save(level);
     }
 
@@ -65,7 +67,7 @@ public class LevelServiceImpl implements LevelService {
 
     public Level getLevelByName(String levelName){
 
-        return levelRepository.findByLevelName(levelName);
+        return levelRepository.findByLevelName(levelName.trim());
 
     }
 }

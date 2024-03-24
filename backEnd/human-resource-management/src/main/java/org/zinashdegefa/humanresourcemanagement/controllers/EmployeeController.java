@@ -51,6 +51,7 @@ public class EmployeeController {
             model.addAttribute("departments", departments);
             model.addAttribute("managers", managers);
             model.addAttribute("employee", employee);
+
             return "/add-emp-form";
         }
         employeeService.saveEmployee(employee);

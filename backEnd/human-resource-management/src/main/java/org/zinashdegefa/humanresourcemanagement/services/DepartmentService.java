@@ -8,7 +8,7 @@ import java.util.List;
 // Department Service Interface
 
 public interface DepartmentService {
-    void saveDepartment(Department department);
+    Department saveDepartment(Department department);
     List<Department> getAllDepartments();
     void deleteDepartment(int departmentId);
     void updateDepartment(Department department);

@@ -23,9 +23,13 @@ public class DepartmentServiceImpl implements DepartmentService {
         this.departmentRepository = departmentRepository;
     }
     @Override
-    public void saveDepartment(Department department) {
+    public Department saveDepartment(Department department) {
 
-        departmentRepository.save(department);
+        department.setDepartmentName(department.getDepartmentName().trim()); //Trim the name before saving
+
+        Department savedDepartment = departmentRepository.save(department);
+
+        return savedDepartment;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     public Department getDepartmentByName(String name){
 
-        return departmentRepository.findByDepartmentName(name);
+        return departmentRepository.findByDepartmentName(name.trim());
 
     }
 }
