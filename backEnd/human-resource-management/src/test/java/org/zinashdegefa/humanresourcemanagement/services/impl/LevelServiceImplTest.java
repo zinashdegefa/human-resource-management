@@ -13,6 +13,7 @@ import org.zinashdegefa.humanresourcemanagement.repositories.EmployeeRepository;
 import org.zinashdegefa.humanresourcemanagement.repositories.LevelRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,19 +31,18 @@ class LevelServiceImplTest {
     void getLevelById() {
 
 
-//        Mockito.when(levelRepository.findByLevelId().th
-//        Level levId = levelService.getLevelById(levelId);
-//        System.out.println("level id: " + levId);
-//        Assertions.assertNotNull(levId);
-//        assertEquals(1, levId.getId());
-//    }
+        Mockito.when(levelRepository.findById(1L)).thenReturn(Optional.ofNullable(levelById()));
+        Level lev = levelService.getLevelById(1);
+        System.out.println("level : " + lev);
+        Assertions.assertNotNull(lev);
+        assertEquals("TestLevelName", lev.getLevelName());
+    }
 
-//    private Level levelId() {
-//
-//        Level levelId = Level.builder()
-//                .id(1)
-//                .build();
-//        return levelId;
+    private Level levelById() {
+
+        return Level.builder()
+                .levelName("TestLevelName")
+                .build();
    }
 
 }
