@@ -111,7 +111,7 @@ public class EmployeeController {
         model.addAttribute("levels", levels);
         model.addAttribute("departments", departments);
         model.addAttribute("managers", managers);
-        return "update-form";
+        return "update_employee_form";
     }
 
 }
