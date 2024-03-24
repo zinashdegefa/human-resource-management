@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
-@Table(name ="LoginRole")
+@Table(name ="user_role")
 public class UserRole {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
