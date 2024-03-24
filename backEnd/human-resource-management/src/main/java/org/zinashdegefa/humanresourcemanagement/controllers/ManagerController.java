@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import java.util.List;
 
 
 // Manager Controller with CRUD path
+@Slf4j
 @Controller
 public class ManagerController {
 
@@ -54,6 +56,9 @@ public class ManagerController {
 
     public String managers(Model model) {
         List<Manager> managers = managerService.getAllManagers();
+        for(Manager man: managers){
+            log.info("Manager name: {}", man.getFirstName());
+        }
         model.addAttribute("managers", managers);
 
         return "all_managers";

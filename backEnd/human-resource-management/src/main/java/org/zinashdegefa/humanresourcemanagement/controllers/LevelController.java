@@ -2,6 +2,7 @@ package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import com.mysql.cj.util.StringUtils;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.zinashdegefa.humanresourcemanagement.services.LevelService;
 import java.util.List;
 
 // Level Controller with CRUD path
+@Slf4j
 @Controller
 public class LevelController {
 
@@ -42,6 +44,9 @@ public class LevelController {
 
     public String levels(Model model) {
         List<Level> levels = levelService.getAllLevels();
+        for(Level level: levels){
+            log.info("Level name: " + level.getLevelName());
+        }
         model.addAttribute("levels", levels);
 
         return "all_levels";

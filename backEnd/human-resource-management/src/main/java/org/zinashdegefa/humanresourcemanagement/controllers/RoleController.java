@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import org.zinashdegefa.humanresourcemanagement.services.RoleService;
 import java.util.List;
 
 // Role Controller with CRUD path
+@Slf4j
 @Controller
 public class RoleController {
 
@@ -46,6 +48,9 @@ public class RoleController {
 
     public String roles (Model model) {
         List<Role> roles = roleService.getAllRoles();
+        for(Role role: roles){
+            log.info("Role name: {}", role.getRoleName());
+        }
         model.addAttribute("roles", roles);
 
         return "all_roles";

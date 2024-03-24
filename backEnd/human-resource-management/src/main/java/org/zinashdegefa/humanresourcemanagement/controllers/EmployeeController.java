@@ -1,6 +1,7 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,7 @@ import org.zinashdegefa.humanresourcemanagement.services.*;
 import java.util.List;
 
 // Employee Controller with CRUD path
-
+@Slf4j
 @Controller
 public class EmployeeController {
     private final EmployeeService employeeService;
@@ -38,7 +39,7 @@ public class EmployeeController {
     @PostMapping("/save/employee")
     private String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
 
-        System.out.println("Employee to be updated:/saved "+ employee);
+       log.info("Employee to be updated:/saved "+ employee);
 
         if(result.hasErrors()){
             List<Role> roles = roleService.getAllRoles();
@@ -62,6 +63,10 @@ public class EmployeeController {
 
     public String employees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
+
+        for(Employee emp: employees){
+            log.info("Employee first name: " + emp.getFirstName());
+        }
         model.addAttribute("employees", employees);
         return "all_employees";
 
@@ -77,7 +82,7 @@ public class EmployeeController {
     @RequestMapping("/delete/employee/{employeeId}")
     public String deleteEmployee(@PathVariable int employeeId) {
         employeeService.deleteEmployee(employeeId);
-        System.out.println("Employee deleted for id: " + employeeId);
+        log.warn("Employee deleted for id: " + employeeId);
         return "redirect:/getAll/employees";
     }
 
@@ -99,13 +104,12 @@ public class EmployeeController {
 
     @RequestMapping("/update/employee/{id}")
     public String updateForm(@PathVariable int id, Model model) {
-        System.out.println("Id: " + id);
         Employee employee = employeeService.getEmployeeById(id);
         List<Role> roles = roleService.getAllRoles();
         List<Level> levels = levelService.getAllLevels();
         List<Department> departments = departmentService.getAllDepartments();
         List<Manager> managers = managerService.getAllManagers();
-        System.out.println("Employee to be updated: "+ employee);
+       log.info("Employee to be updated: "+ employee);
         model.addAttribute("employee", employee);
         model.addAttribute("roles", roles);
         model.addAttribute("levels", levels);

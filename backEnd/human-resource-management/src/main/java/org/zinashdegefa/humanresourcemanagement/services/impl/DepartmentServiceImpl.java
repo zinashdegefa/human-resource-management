@@ -1,5 +1,6 @@
 package org.zinashdegefa.humanresourcemanagement.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zinashdegefa.humanresourcemanagement.models.Department;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 // Department Service Implementation class
 
+@Slf4j
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
@@ -28,7 +30,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         department.setDepartmentName(department.getDepartmentName().trim()); //Trim the name before saving
 
         Department savedDepartment = departmentRepository.save(department);
-
+        log.info("Employee saved");
         return savedDepartment;
     }
 

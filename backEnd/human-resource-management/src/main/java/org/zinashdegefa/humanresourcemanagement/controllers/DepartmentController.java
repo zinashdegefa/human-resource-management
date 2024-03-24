@@ -1,6 +1,8 @@
 package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,7 @@ import java.util.List;
 
 
 // Department Controller with CRUD path
+@Slf4j
 @Controller
 public class DepartmentController {
 
@@ -23,8 +26,8 @@ public class DepartmentController {
 
     @PostMapping("/save/department")
     private String saveDepartment(@Valid @ModelAttribute("department") Department department, BindingResult result, Model model) {
-        System.out.println("Result for department: " + result);
-        System.out.println("Department to be saved "+ department);
+        log.info("Result for department: " + result);
+        log.info("Department to be saved "+ department);
 
         Department existingDepartment = departmentService.getDepartmentByName(department.getDepartmentName());
 
@@ -45,6 +48,9 @@ public class DepartmentController {
 
     public String departments (Model model) {
         List<Department> departments = departmentService.getAllDepartments();
+        for (Department dep: departments){
+            log.info("Department name: " + dep.getDepartmentName());
+        }
         model.addAttribute("departments", departments);
         return "all_departments";
     }
@@ -61,10 +67,10 @@ public class DepartmentController {
 
         try{
             departmentService.deleteDepartment(departmentId);
-            System.out.println("Id number " + departmentId + " is deleted!");
+            log.info("Id number " + departmentId + " is deleted!");
             return "redirect:/getAll/departments";
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            log.error("Exception: " + e);
             return "redirect:/getAll/departments?failed";
         }
     }
@@ -72,7 +78,7 @@ public class DepartmentController {
     @PutMapping("/update/department")
     public Department updateDepartment(@RequestBody Department department) {
         departmentService.saveDepartment(department);
-        System.out.println(department.getDepartmentName() + " is updated!");
+        log.info(department.getDepartmentName() + " is updated!");
         return department;
     }
 
