@@ -5,9 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.zinashdegefa.humanresourcemanagement.models.Department;
-import org.zinashdegefa.humanresourcemanagement.models.Level;
-import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.models.Role;
 import org.zinashdegefa.humanresourcemanagement.services.RoleService;
 
@@ -37,7 +34,7 @@ public class RoleController {
 
         if(result.hasErrors()){
             model.addAttribute("role", role);
-            return "/add-rol-form";
+            return "add_role_form";
         }
 
         roleService.saveRole(role);
@@ -51,7 +48,7 @@ public class RoleController {
         List<Role> roles = roleService.getAllRoles();
         model.addAttribute("roles", roles);
 
-        return "all-roles";
+        return "all_roles";
     }
 
     @GetMapping("/getRoleById/{roleId}")
@@ -84,6 +81,6 @@ public class RoleController {
     public String addForm(Model model) {
         Role role = new Role();
         model.addAttribute("role", role);
-        return "add-rol-form";
+        return "add_role_form";
     }
 }

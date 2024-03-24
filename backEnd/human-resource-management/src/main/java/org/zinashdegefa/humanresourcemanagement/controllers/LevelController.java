@@ -6,9 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zinashdegefa.humanresourcemanagement.models.Department;
-import org.zinashdegefa.humanresourcemanagement.models.Employee;
 import org.zinashdegefa.humanresourcemanagement.models.Level;
 import org.zinashdegefa.humanresourcemanagement.services.LevelService;
 
@@ -35,7 +32,7 @@ public class LevelController {
 
         if(result.hasErrors()){
            model.addAttribute("level", level);
-            return "/add-lev-form";
+            return "add_level_form";
        }
         levelService.saveLevel(level);
         return "redirect:/getAll/levels";
@@ -47,7 +44,7 @@ public class LevelController {
         List<Level> levels = levelService.getAllLevels();
         model.addAttribute("levels", levels);
 
-        return "all-levels";
+        return "all_levels";
     }
 
     @GetMapping("/getLevelById/{levelId}")
@@ -79,6 +76,6 @@ public class LevelController {
     public String addForm(Model model) {
         Level level = new Level();
         model.addAttribute("level", level);
-        return "add-lev-form";
+        return "add_level_form";
     }
 }

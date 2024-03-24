@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zinashdegefa.humanresourcemanagement.models.*;
 import org.zinashdegefa.humanresourcemanagement.services.DepartmentService;
 
@@ -35,7 +34,7 @@ public class DepartmentController {
 
         if(result.hasErrors()){
             model.addAttribute("department", department);
-            return "/add-dep-form";
+            return "add_department_form";
         }
         departmentService.saveDepartment(department);
         return "redirect:/getAll/departments";
@@ -47,7 +46,7 @@ public class DepartmentController {
     public String departments (Model model) {
         List<Department> departments = departmentService.getAllDepartments();
         model.addAttribute("departments", departments);
-        return "all-departments";
+        return "all_departments";
     }
 
 
@@ -81,6 +80,6 @@ public class DepartmentController {
     public String addForm(Model model) {
        Department department = new Department();
         model.addAttribute("department", department);
-        return "add-dep-form";
+        return "add_department_form";
     }
 }

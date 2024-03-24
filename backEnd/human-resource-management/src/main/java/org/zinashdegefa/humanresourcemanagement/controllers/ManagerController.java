@@ -43,7 +43,7 @@ public class ManagerController {
             model.addAttribute("manager", manager);
             model.addAttribute("departments", departments);
             model.addAttribute("manager", manager);
-            return "/add-man-form";
+            return "add_manager_form";
         }
         managerService.saveManager(manager);
 
@@ -56,7 +56,7 @@ public class ManagerController {
         List<Manager> managers = managerService.getAllManagers();
         model.addAttribute("managers", managers);
 
-        return "all-managers";
+        return "all_managers";
 
     }
 
@@ -87,7 +87,7 @@ public class ManagerController {
         } catch (Exception e) {
             result.rejectValue("department", null, "There is already .....");  // TODO finish this
 
-            return "/add-man-form";
+            return "add_manager_form";
         }
         System.out.println(manager.getId() + " is updated!");
         return "manager";
@@ -99,7 +99,7 @@ public class ManagerController {
         Manager manager = new Manager();
         model.addAttribute("manager", manager);
         model.addAttribute("departments", departments);
-        return "add-man-form";
+        return "add_manager_form";
     }
 
 

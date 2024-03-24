@@ -52,7 +52,7 @@ public class EmployeeController {
             model.addAttribute("managers", managers);
             model.addAttribute("employee", employee);
 
-            return "/add-emp-form";
+            return "add_employee_form";
         }
         employeeService.saveEmployee(employee);
         return "redirect:/getAll/employees";
@@ -63,7 +63,7 @@ public class EmployeeController {
     public String employees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
-        return "all-employees";
+        return "all_employees";
 
     }
 
@@ -94,7 +94,7 @@ public class EmployeeController {
         model.addAttribute("levels", levels);
         model.addAttribute("departments", departments);
         model.addAttribute("managers", managers);
-        return "add-emp-form";
+        return "add_employee_form";
     }
 
     @RequestMapping("/update/employee/{id}")
