@@ -1,7 +1,7 @@
 
 // JavaScript file
 
-function demo(){
-    alert('Hello!')
-    console.log('Hello from console log');
+function deleteFunction(){
+    let confirmation = confirm('Are you sure you want to delete?')
+
 }

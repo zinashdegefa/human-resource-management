@@ -79,7 +79,6 @@ public class DepartmentController {
 
     @GetMapping("/add/depForm")
     public String addForm(Model model) {
-//        List<Department> departments = departmentService.getAllDepartments();
        Department department = new Department();
         model.addAttribute("department", department);
         return "add-dep-form";
