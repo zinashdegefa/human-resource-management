@@ -9,3 +9,5 @@ Before starting to use the application, the user must register and login with th
 Users can create(save) employee records, assign departments, their  roles, levels and their managers.
 
 In addition, users can perform CRUD operations to get a list of employees, update employees, and they can delete employees, levels, roles, departments and managers.
+
+GitHub Link: https://github.com/zinashdegefa/human-resource-management

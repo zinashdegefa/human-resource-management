@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //  UserRole Model Class
-@Builder
+
 @Entity
 @Setter
 @Getter

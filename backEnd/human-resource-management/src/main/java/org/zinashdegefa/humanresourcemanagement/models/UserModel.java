@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 //  UserModel Model Class
-
-@Builder
 @Getter
 @Setter
 @RequiredArgsConstructor
