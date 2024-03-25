@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         userModel.setEmail(user.getEmail());
 
         // Encrypt the password using Spring Security
+
         userModel.setPassword(passwordEncoder.encode(user.getPassword()));
         UserRole userRole = userRoleRepository.findByName("ROLE_ADMIN");
         if (userRole == null) {

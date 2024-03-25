@@ -25,6 +25,7 @@ class RoleServiceImplTest {
     @MockBean
     private RoleRepository roleRepository;
 
+//    Parameterized Test
     private static Stream<Arguments> parametersValue() {
         return Stream.of(
                 Arguments.of("TestRoleName", "TestRoleName"),

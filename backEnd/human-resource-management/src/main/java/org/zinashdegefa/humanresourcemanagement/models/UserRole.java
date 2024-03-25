@@ -1,16 +1,13 @@
 package org.zinashdegefa.humanresourcemanagement.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //  UserRole Model Class
-
+@Builder
 @Entity
 @Setter
 @Getter
