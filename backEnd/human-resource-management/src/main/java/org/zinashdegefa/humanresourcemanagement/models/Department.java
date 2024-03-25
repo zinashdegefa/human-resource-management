@@ -19,6 +19,6 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotEmpty(message = "Department Name is required")
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String departmentName;
 }

@@ -29,7 +29,7 @@ public class Manager {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "department_id")
     private Department department;
 }

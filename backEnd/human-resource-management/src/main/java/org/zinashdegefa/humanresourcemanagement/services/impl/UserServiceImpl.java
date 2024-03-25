@@ -1,6 +1,5 @@
 package org.zinashdegefa.humanresourcemanagement.services.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.zinashdegefa.humanresourcemanagement.models.UserModel;
@@ -10,7 +9,6 @@ import org.zinashdegefa.humanresourcemanagement.repositories.UserRoleRepository;
 import org.zinashdegefa.humanresourcemanagement.services.UserService;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 // User Service Implementation class
 
@@ -19,10 +17,10 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
-   private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository,
-                              PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder) {
         super();
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
@@ -53,9 +51,9 @@ public class UserServiceImpl implements UserService {
         return userRoleRepository.save(role);
     }
 
-    public UserModel getUserByEmail(String email){
+    public UserModel getUserByEmail(String email) {
 
-       return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email);
 
     }
 

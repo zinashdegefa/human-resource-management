@@ -16,12 +16,12 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
-@Table(name ="user_role")
+@Table(name = "user_role")
 public class UserRole {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false, unique = true)
     String name;
     @ManyToMany(mappedBy = "userRoles")
     List<UserModel> users = new ArrayList<>();

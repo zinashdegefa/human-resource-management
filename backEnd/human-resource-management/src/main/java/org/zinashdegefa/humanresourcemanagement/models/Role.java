@@ -21,6 +21,6 @@ public class Role {
     private int id;
 
     @NotEmpty(message = "Role Name is required")
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String roleName;
 }

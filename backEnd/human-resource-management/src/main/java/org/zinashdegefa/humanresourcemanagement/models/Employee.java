@@ -1,6 +1,5 @@
 package org.zinashdegefa.humanresourcemanagement.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -38,21 +37,21 @@ public class Employee {
     private String lastName;
 
     @NotNull(message = "Role is required")
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role_id")
     private Role role;
 
     @NotNull(message = "Level is required")
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "level_id")
     private Level level;
 
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_id")
     private Manager manager;
 
     @NotNull(message = "Department is required")
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "department_id")
     private Department department;
 

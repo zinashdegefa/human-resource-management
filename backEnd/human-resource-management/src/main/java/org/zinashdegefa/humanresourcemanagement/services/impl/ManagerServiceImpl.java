@@ -2,13 +2,10 @@ package org.zinashdegefa.humanresourcemanagement.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zinashdegefa.humanresourcemanagement.models.Employee;
-import org.zinashdegefa.humanresourcemanagement.models.Level;
 import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.repositories.ManagerRepository;
 import org.zinashdegefa.humanresourcemanagement.services.ManagerService;
 
-import java.security.interfaces.ECKey;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,14 +16,13 @@ public class ManagerServiceImpl implements ManagerService {
 
     private final ManagerRepository managerRepository;
 
-    public ManagerServiceImpl(ManagerRepository managerRepository)
-    {
+    public ManagerServiceImpl(ManagerRepository managerRepository) {
         this.managerRepository = managerRepository;
     }
 
     @Override
     public void saveManager(Manager manager) {
-            managerRepository.save(manager);
+        managerRepository.save(manager);
     }
 
     @Override
@@ -63,7 +59,7 @@ public class ManagerServiceImpl implements ManagerService {
     @Transactional
     public void deleteManager(int managerId) {
         managerRepository.deleteById((long) managerId);
-        System.out.println("The manager with id number "  + managerId + " is deleted!");
+        System.out.println("The manager with id number " + managerId + " is deleted!");
     }
 
     @Override

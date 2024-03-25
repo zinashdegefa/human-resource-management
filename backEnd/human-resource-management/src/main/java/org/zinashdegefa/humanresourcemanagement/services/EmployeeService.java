@@ -10,8 +10,11 @@ public interface EmployeeService {
     void saveEmployee(Employee employee);
 
     List<Employee> getAllEmployees();
+
     void deleteEmployee(int employeeId);
+
     void updateEmployee(Employee employee);
+
     Employee getEmployeeById(int employeeId);
 
 }

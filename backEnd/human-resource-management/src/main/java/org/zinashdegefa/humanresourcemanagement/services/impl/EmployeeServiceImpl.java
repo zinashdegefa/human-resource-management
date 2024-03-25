@@ -2,14 +2,13 @@ package org.zinashdegefa.humanresourcemanagement.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zinashdegefa.humanresourcemanagement.models.Department;
 import org.zinashdegefa.humanresourcemanagement.models.Employee;
 import org.zinashdegefa.humanresourcemanagement.repositories.EmployeeRepository;
 import org.zinashdegefa.humanresourcemanagement.services.EmployeeService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 // Employee Service Implementation class
 
@@ -17,8 +16,7 @@ import java.util.stream.Collectors;
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository)
-    {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
 
         this.employeeRepository = employeeRepository;
     }
@@ -54,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     public void deleteEmployee(int employeeId) {
         employeeRepository.deleteById((long) employeeId);
-        System.out.println("The employee with id number "  + employeeId + " is deleted!");
+        System.out.println("The employee with id number " + employeeId + " is deleted!");
     }
 
     @Override

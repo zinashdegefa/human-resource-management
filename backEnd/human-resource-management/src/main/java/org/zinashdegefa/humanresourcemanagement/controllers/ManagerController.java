@@ -30,16 +30,16 @@ public class ManagerController {
     private String saveManager(@Valid @ModelAttribute("manager") Manager manager, BindingResult result, Model model) {
         System.out.println("Manager to be updated:/saved " + manager);
 
-    if (manager.getDepartment() != null) {
-        Manager existingManager = managerService.getManagerByDepartmentId(manager.getDepartment().getId());
+        if (manager.getDepartment() != null) {
+            Manager existingManager = managerService.getManagerByDepartmentId(manager.getDepartment().getId());
 
-        System.out.println("Existing manger: " + existingManager);
+            System.out.println("Existing manger: " + existingManager);
 
-        if (existingManager != null && existingManager.getDepartment() != null && !existingManager.getDepartment().getDepartmentName().isEmpty()) {
-            result.rejectValue("department", null, "A manager is already assigned to this department");
+            if (existingManager != null && existingManager.getDepartment() != null && !existingManager.getDepartment().getDepartmentName().isEmpty()) {
+                result.rejectValue("department", null, "A manager is already assigned to this department");
+            }
+
         }
-
-    }
         if (result.hasErrors()) {
             List<Department> departments = departmentService.getAllDepartments();
             model.addAttribute("manager", manager);
@@ -56,7 +56,7 @@ public class ManagerController {
 
     public String managers(Model model) {
         List<Manager> managers = managerService.getAllManagers();
-        for(Manager man: managers){
+        for (Manager man : managers) {
             log.info("Manager name: {}", man.getFirstName());
         }
         model.addAttribute("managers", managers);

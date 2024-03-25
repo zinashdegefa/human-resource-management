@@ -2,7 +2,6 @@ package org.zinashdegefa.humanresourcemanagement.controllers;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,15 +26,15 @@ public class DepartmentController {
     @PostMapping("/save/department")
     private String saveDepartment(@Valid @ModelAttribute("department") Department department, BindingResult result, Model model) {
         log.info("Result for department: " + result);
-        log.info("Department to be saved "+ department);
+        log.info("Department to be saved " + department);
 
         Department existingDepartment = departmentService.getDepartmentByName(department.getDepartmentName());
 
         if (existingDepartment != null && existingDepartment.getDepartmentName() != null && !existingDepartment.getDepartmentName().isEmpty()) {
-           result.rejectValue("departmentName", null, "There is already a department registered with the same name");
+            result.rejectValue("departmentName", null, "There is already a department registered with the same name");
         }
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             model.addAttribute("department", department);
             return "add_department_form";
         }
@@ -46,9 +45,9 @@ public class DepartmentController {
 
     @GetMapping("/getAll/departments")
 
-    public String departments (Model model) {
+    public String departments(Model model) {
         List<Department> departments = departmentService.getAllDepartments();
-        for (Department dep: departments){
+        for (Department dep : departments) {
             log.info("Department name: " + dep.getDepartmentName());
         }
         model.addAttribute("departments", departments);
@@ -57,7 +56,7 @@ public class DepartmentController {
 
 
     @GetMapping("/getDepartmentById/{departmentId}")
-    public Department getDepartmentById(@PathVariable int departmentId){
+    public Department getDepartmentById(@PathVariable int departmentId) {
 
         return departmentService.getDepartmentById(departmentId);
     }
@@ -65,7 +64,7 @@ public class DepartmentController {
     @RequestMapping("/delete/department/{departmentId}")
     public String deleteDepartment(@PathVariable int departmentId) {
 
-        try{
+        try {
             departmentService.deleteDepartment(departmentId);
             log.info("Id number " + departmentId + " is deleted!");
             return "redirect:/getAll/departments";
@@ -84,7 +83,7 @@ public class DepartmentController {
 
     @GetMapping("/add/depForm")
     public String addForm(Model model) {
-       Department department = new Department();
+        Department department = new Department();
         model.addAttribute("department", department);
         return "add_department_form";
     }

@@ -21,7 +21,7 @@ public class Level {
     private int id;
 
     @NotEmpty(message = "Level Name is required")
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String levelName;
 
 

@@ -13,14 +13,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SpringSecurity {
 
-//    Spring Security for authentication and protection
+    //    Spring Security for authentication and protection
     @Bean
     public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
                 .authorizeHttpRequests()

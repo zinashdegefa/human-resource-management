@@ -2,8 +2,6 @@ package org.zinashdegefa.humanresourcemanagement.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zinashdegefa.humanresourcemanagement.models.Department;
-import org.zinashdegefa.humanresourcemanagement.models.Manager;
 import org.zinashdegefa.humanresourcemanagement.models.Role;
 import org.zinashdegefa.humanresourcemanagement.repositories.RoleRepository;
 import org.zinashdegefa.humanresourcemanagement.services.RoleService;
@@ -18,14 +16,13 @@ public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository roleRepository)
-    {
+    public RoleServiceImpl(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 
     @Override
     public Role saveRole(Role role) {
-       role.setRoleName(role.getRoleName().trim()); //Trim the name before saving
+        role.setRoleName(role.getRoleName().trim()); //Trim the name before saving
         return roleRepository.save(role);
     }
 
@@ -52,7 +49,7 @@ public class RoleServiceImpl implements RoleService {
     @Transactional
     public void deleteRole(int roleId) {
         roleRepository.deleteById((long) roleId);
-        System.out.println("The role with id number "  + roleId + " is deleted!");
+        System.out.println("The role with id number " + roleId + " is deleted!");
     }
 
     @Override
@@ -62,7 +59,7 @@ public class RoleServiceImpl implements RoleService {
         roleRepository.save(role);
     }
 
-    public Role getRoleByName(String roleName){
+    public Role getRoleByName(String roleName) {
         return roleRepository.findByRoleName(roleName.trim());
     }
 }

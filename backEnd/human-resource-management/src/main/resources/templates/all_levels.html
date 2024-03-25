@@ -5,7 +5,8 @@
     <title>All levels</title>
     <link th:href="@{/css/main.css}" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/main.js}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body id="displayBody">
 <div th:replace="~{fragment/nav :: navbar}"></div>
@@ -13,7 +14,9 @@
 <!--    Display list of all Levels-->
 
 <div class="m-5">
-    <a th:href="@{/add/levForm}"><button class="btn btn-success">Add Level</button></a>
+    <a th:href="@{/add/levForm}">
+        <button class="btn btn-success">Add Level</button>
+    </a>
 
     <!--Error Message-->
 
@@ -39,7 +42,7 @@
             <td th:text="${lev.id}"></td>
             <td th:text="${lev.getLevelName()}"></td>
 
-            <td> <a class="btn btn-danger" th:href="@{/delete/level/{id}(id=${lev.id})}">Delete</a></td>
+            <td><a class="btn btn-danger" th:href="@{/delete/level/{id}(id=${lev.id})}">Delete</a></td>
         </tr>
         </tbody>
     </table>

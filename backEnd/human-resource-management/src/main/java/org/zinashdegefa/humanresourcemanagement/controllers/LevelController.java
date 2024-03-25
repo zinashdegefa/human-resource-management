@@ -25,17 +25,17 @@ public class LevelController {
 
     @PostMapping("/save/level")
     private String saveLevel(@Valid @ModelAttribute("level") Level level, BindingResult result, Model model) {
-        System.out.println("Level to be updated:/saved "+ level);
+        System.out.println("Level to be updated:/saved " + level);
         Level existingLevel = levelService.getLevelByName(level.getLevelName());
 
         if (existingLevel != null && !StringUtils.isNullOrEmpty(existingLevel.getLevelName())) {
-           result.rejectValue("levelName", null, "There is already a level registered with the same name");
-       }
+            result.rejectValue("levelName", null, "There is already a level registered with the same name");
+        }
 
-        if(result.hasErrors()){
-           model.addAttribute("level", level);
+        if (result.hasErrors()) {
+            model.addAttribute("level", level);
             return "add_level_form";
-       }
+        }
         levelService.saveLevel(level);
         return "redirect:/getAll/levels";
     }
@@ -44,7 +44,7 @@ public class LevelController {
 
     public String levels(Model model) {
         List<Level> levels = levelService.getAllLevels();
-        for(Level level: levels){
+        for (Level level : levels) {
             log.info("Level name: " + level.getLevelName());
         }
         model.addAttribute("levels", levels);
@@ -53,14 +53,14 @@ public class LevelController {
     }
 
     @GetMapping("/getLevelById/{levelId}")
-    public Level getLevelById(@PathVariable int levelId){
+    public Level getLevelById(@PathVariable int levelId) {
 
         return levelService.getLevelById(levelId);
     }
 
-    @RequestMapping ("/delete/level/{levelId}")
+    @RequestMapping("/delete/level/{levelId}")
     public String deleteLevel(@PathVariable int levelId) {
-        try{
+        try {
             levelService.deleteLevel(levelId);
             System.out.println("Id number " + levelId + " is deleted!");
             return "redirect:/getAll/levels";

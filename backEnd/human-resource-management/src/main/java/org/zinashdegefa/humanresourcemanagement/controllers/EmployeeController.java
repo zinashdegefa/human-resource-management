@@ -39,9 +39,9 @@ public class EmployeeController {
     @PostMapping("/save/employee")
     private String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
 
-       log.info("Employee to be updated:/saved "+ employee);
+        log.info("Employee to be updated:/saved " + employee);
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             List<Role> roles = roleService.getAllRoles();
             List<Level> levels = levelService.getAllLevels();
             List<Department> departments = departmentService.getAllDepartments();
@@ -64,7 +64,7 @@ public class EmployeeController {
     public String employees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
 
-        for(Employee emp: employees){
+        for (Employee emp : employees) {
             log.info("Employee first name: " + emp.getFirstName());
         }
         model.addAttribute("employees", employees);
@@ -109,7 +109,7 @@ public class EmployeeController {
         List<Level> levels = levelService.getAllLevels();
         List<Department> departments = departmentService.getAllDepartments();
         List<Manager> managers = managerService.getAllManagers();
-       log.info("Employee to be updated: "+ employee);
+        log.info("Employee to be updated: " + employee);
         model.addAttribute("employee", employee);
         model.addAttribute("roles", roles);
         model.addAttribute("levels", levels);

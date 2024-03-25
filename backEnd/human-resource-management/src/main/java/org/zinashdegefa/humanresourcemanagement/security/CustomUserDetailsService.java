@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
+
     public CustomUserDetailsService(UserRepository userRepository) {
         super();
         this.userRepository = userRepository;
@@ -24,14 +25,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
-       UserModel userModel = userRepository.findByEmail(usernameOrEmail);
-        if(userModel != null) {
+        UserModel userModel = userRepository.findByEmail(usernameOrEmail);
+        if (userModel != null) {
             return new org.springframework.security.core.userdetails.User(userModel.getEmail(),
                     userModel.getPassword(),
                     userModel.getUserRoles().stream()
                             .map((role) -> new SimpleGrantedAuthority(role.getName()))
                             .collect(Collectors.toList()));
-        }else {
+        } else {
             throw new UsernameNotFoundException("Invalid email or password");
         }
     }
