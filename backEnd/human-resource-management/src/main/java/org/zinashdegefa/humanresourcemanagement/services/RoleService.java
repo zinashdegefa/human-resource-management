@@ -8,7 +8,7 @@ import java.util.List;
 // Role Service Interface
 public interface RoleService {
 
-    void saveRole(Role role);
+    Role saveRole(Role role);
     List<Role> getAllRoles();
     void deleteRole(int roleId);
     void updateRole(Role role);

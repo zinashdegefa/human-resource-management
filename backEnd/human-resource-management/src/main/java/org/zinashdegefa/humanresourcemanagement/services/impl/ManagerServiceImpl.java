@@ -50,8 +50,8 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     @Transactional
-    public Manager getManagerByDepartmentId(int managerId) {
-        Optional<Manager> getManagerById = managerRepository.findByDepartmentId(managerId);
+    public Manager getManagerByDepartmentId(int departmentId) {
+        Optional<Manager> getManagerById = managerRepository.findByDepartmentId(departmentId);
         if (getManagerById.isPresent()) {
             System.out.println("The Id of the manager is " + getManagerById.get().getId());
             return getManagerById.get();

@@ -39,16 +39,15 @@
     font-family: serif, fantasy;
 }
 
-.centered:hover{
-
-    color: rgb(12, 238, 23);
-    font-size: 80px;
-}
-
 
 
 /*Navigation bar*/
 .nav-link:hover {
     background-color: #4f4d4d;
     border-radius: 15px;
+}
+
+#welcome:hover {
+    cursor: pointer;
+    /*background-color: #e5e2de;*/
 }
